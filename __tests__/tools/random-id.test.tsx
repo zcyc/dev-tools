@@ -21,7 +21,7 @@ describe('Random ID Redirect Page', () => {
     render(<RandomIdRedirectPage />)
     
     expect(screen.getByText('正在重定向...')).toBeInTheDocument()
-    expect(screen.getByText('随机ID生成器已合并到ID生成器中，支持更多格式')).toBeInTheDocument()
+    expect(screen.getByText('随机 ID 生成器已合并到 ID 生成器中，支持更多格式')).toBeInTheDocument()
   })
 
   it('redirects to advanced ID generator', () => {

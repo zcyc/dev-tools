@@ -33,12 +33,12 @@ export const mockTranslations = {
     },
     tools: {
       idGenerator: {
-        name: 'ID生成器',
-        description: '支持30+种ID格式生成与解析，包括UUID、ULID、KSUID等',
-        pageTitle: 'ID生成器',
-        pageDescription: '支持30+种ID格式的生成与解析，包括UUID、ULID、KSUID等现代标识符',
-        generation: '生成ID',
-        parsing: '解析ID',
+        name: 'ID 生成器',
+        description: '支持 30+ 种 ID 格式生成与解析，包括 UUID、ULID、KSUID 等',
+        pageTitle: 'ID 生成器',
+        pageDescription: '支持 30+ 种 ID 格式的生成与解析，包括 UUID、ULID、KSUID 等现代标识符',
+        generation: '生成 ID',
+        parsing: '解析 ID',
         generateConfig: 'ID生成配置',
         generateConfigDesc: '选择ID类型和生成参数',
         idType: 'ID类型',

@@ -21,7 +21,7 @@ describe('UUID Redirect Page', () => {
     render(<UUIDRedirectPage />)
     
     expect(screen.getByText('正在重定向...')).toBeInTheDocument()
-    expect(screen.getByText('UUID生成器已升级为ID生成器，支持更多格式')).toBeInTheDocument()
+    expect(screen.getByText('UUID 生成器已升级为 ID 生成器，支持更多格式')).toBeInTheDocument()
   })
 
   it('redirects to advanced ID generator', () => {

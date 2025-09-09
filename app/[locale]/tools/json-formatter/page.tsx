@@ -18,7 +18,7 @@ export default function JSONFormatterPage() {
 
   const formatJSON = () => {
     if (!input.trim()) {
-      toast.error('请输入JSON数据')
+      toast.error('请输入 JSON 数据')
       return
     }
 
@@ -26,15 +26,15 @@ export default function JSONFormatterPage() {
       const parsed = JSON.parse(input)
       const formatted = JSON.stringify(parsed, null, parseInt(indentSize))
       setOutput(formatted)
-      toast.success('JSON格式化完成')
+      toast.success('JSON 格式化完成')
     } catch (error) {
-      toast.error('JSON格式错误，请检查输入')
+      toast.error('JSON 格式错误，请检查输入')
     }
   }
 
   const minifyJSON = () => {
     if (!input.trim()) {
-      toast.error('请输入JSON数据')
+      toast.error('请输入 JSON 数据')
       return
     }
 
@@ -42,9 +42,9 @@ export default function JSONFormatterPage() {
       const parsed = JSON.parse(input)
       const minified = JSON.stringify(parsed)
       setOutput(minified)
-      toast.success('JSON压缩完成')
+      toast.success('JSON 压缩完成')
     } catch (error) {
-      toast.error('JSON格式错误，请检查输入')
+      toast.error('JSON 格式错误，请检查输入')
     }
   }
 
@@ -56,9 +56,9 @@ export default function JSONFormatterPage() {
 
     try {
       JSON.parse(input)
-      toast.success('JSON格式正确')
+      toast.success('JSON 格式正确')
     } catch (error) {
-      toast.error('JSON格式错误：' + (error as Error).message)
+      toast.error('JSON 格式错误：' + (error as Error).message)
     }
   }
 
@@ -92,15 +92,15 @@ export default function JSONFormatterPage() {
   return (
     <MainLayout>
       <ToolLayout
-        title="JSON格式化/压缩"
-        description="格式化、压缩和验证JSON数据"
+        title="JSON 格式化/压缩"
+        description="格式化、压缩和验证 JSON 数据"
         icon="Braces"
       >
         <div className="space-y-6">
           {/* Controls */}
           <Card>
             <CardHeader>
-              <CardTitle>JSON处理</CardTitle>
+              <CardTitle>JSON 处理</CardTitle>
               <CardDescription>选择处理方式和缩进设置</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -112,9 +112,9 @@ export default function JSONFormatterPage() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="2">2个空格</SelectItem>
-                      <SelectItem value="4">4个空格</SelectItem>
-                      <SelectItem value="tab">Tab制表符</SelectItem>
+                      <SelectItem value="2">2 个空格</SelectItem>
+                      <SelectItem value="4">4 个空格</SelectItem>
+                      <SelectItem value="tab">Tab 制表符</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -145,12 +145,12 @@ export default function JSONFormatterPage() {
           {/* Input */}
           <Card>
             <CardHeader>
-              <CardTitle>输入JSON</CardTitle>
-              <CardDescription>粘贴或输入需要处理的JSON数据</CardDescription>
+              <CardTitle>输入 JSON</CardTitle>
+              <CardDescription>粘贴或输入需要处理的 JSON 数据</CardDescription>
             </CardHeader>
             <CardContent>
               <Textarea
-                placeholder="输入或粘贴JSON数据..."
+                placeholder="输入或粘贴 JSON 数据..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 rows={10}
@@ -166,7 +166,7 @@ export default function JSONFormatterPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <CardTitle>处理结果</CardTitle>
-                    <CardDescription>格式化或压缩后的JSON</CardDescription>
+                    <CardDescription>格式化或压缩后的 JSON</CardDescription>
                   </div>
                   <Button
                     variant="ghost"

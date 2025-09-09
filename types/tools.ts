@@ -17,11 +17,11 @@ export interface ToolCategory {
 export const toolCategories: ToolCategory[] = [
   {
     id: 'id-generators',
-    name: 'ID生成工具',
+    name: 'ID 生成工具',
     icon: 'Hash',
     tools: [
-      { id: 'id-generator', name: 'ID生成器', description: '支持30+种ID格式生成与解析，包括UUID、ULID、KSUID等', icon: 'Hash', path: '/tools/id-generator', category: 'id-generators' },
-      { id: 'token', name: 'Token生成器', description: '生成随机访问令牌', icon: 'Key', path: '/tools/token', category: 'id-generators' },
+      { id: 'id-generator', name: 'ID 生成器', description: '支持 30+ 种 ID 格式生成与解析，包括 UUID、ULID、KSUID 等', icon: 'Hash', path: '/tools/id-generator', category: 'id-generators' },
+      { id: 'token', name: 'Token 生成器', description: '生成随机访问令牌', icon: 'Key', path: '/tools/token', category: 'id-generators' },
     ]
   },
   {

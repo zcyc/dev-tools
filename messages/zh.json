@@ -49,103 +49,103 @@
   },
   "tools": {
     "idGenerator": {
-      "name": "ID生成器",
-      "description": "支持30+种ID格式生成与解析，包括UUID、ULID、KSUID等",
-      "pageTitle": "ID生成器",
-      "pageDescription": "支持30+种ID格式的生成与解析，包括UUID、ULID、KSUID等现代标识符",
-      "generation": "生成ID",
-      "parsing": "解析ID",
-      "generateConfig": "ID生成配置",
-      "generateConfigDesc": "选择ID类型和生成参数",
-      "idType": "ID类型",
-      "selectIdType": "选择ID类型",
+      "name": "ID 生成器",
+      "description": "支持 30+ 种 ID 格式生成与解析，包括 UUID、ULID、KSUID 等",
+      "pageTitle": "ID 生成器",
+      "pageDescription": "支持 30+ 种 ID 格式的生成与解析，包括 UUID、ULID、KSUID 等现代标识符",
+      "generation": "生成 ID",
+      "parsing": "解析 ID",
+      "generateConfig": "ID 生成配置",
+      "generateConfigDesc": "选择 ID 类型和生成参数",
+      "idType": "ID 类型",
+      "selectIdType": "选择 ID 类型",
       "generateCount": "生成数量",
-      "namespace": "命名空间UUID",
+      "namespace": "命名空间 UUID",
       "namespacePlaceholder": "留空使用随机命名空间",
       "nameField": "名称",
       "namePlaceholder": "输入名称",
       "length": "长度",
       "alphabet": "自定义字母表",
       "alphabetPlaceholder": "留空使用默认字母表",
-      "generateButton": "生成ID",
+      "generateButton": "生成 ID",
       "formatInfo": "格式信息",
       "example": "示例",
       "features": "特征",
       "generatedResults": "生成结果",
-      "exportIds": "导出ID",
+      "exportIds": "导出 ID",
       "clearAll": "清空全部",
-      "copyId": "复制ID",
-      "idParser": "ID解析器",
-      "parserDescription": "输入任意ID进行格式识别和信息提取",
-      "idString": "ID字符串",
-      "parserPlaceholder": "输入要解析的ID...",
+      "copyId": "复制 ID",
+      "idParser": "ID 解析器",
+      "parserDescription": "输入任意 ID 进行格式识别和信息提取",
+      "idString": "ID 字符串",
+      "parserPlaceholder": "输入要解析的 ID...",
       "detectedType": "检测类型",
       "inputContent": "输入内容",
       "properties": "属性信息",
       "copied": "已复制到剪贴板",
       "exportSuccess": "导出成功",
-      "invalidId": "无效的ID格式",
+      "invalidId": "无效的 ID 格式",
       "categories": {
-        "UUID": "UUID标准格式",
-        "Modern": "现代ID格式",
+        "UUID": "UUID 标准格式",
+        "Modern": "现代 ID 格式",
         "Encoded": "编码格式",
         "Timestamp": "时间戳格式",
         "Legacy": "传统格式"
       }
     },
     "token": {
-      "name": "Token生成器",
+      "name": "Token 生成器",
       "description": "生成随机访问令牌"
     },
     "hash": {
-      "name": "Hash文本生成",
-      "description": "生成MD5、SHA-1、SHA-256等哈希值"
+      "name": "Hash 文本生成",
+      "description": "生成 MD5、SHA-1、SHA-256 等哈希值"
     },
     "bcrypt": {
-      "name": "Bcrypt加密",
-      "description": "Bcrypt密码哈希和验证"
+      "name": "Bcrypt 加密",
+      "description": "Bcrypt 密码哈希和验证"
     },
     "encrypt": {
       "name": "文本加密/解密",
-      "description": "AES、DES等对称加密算法"
+      "description": "AES、DES 等对称加密算法"
     },
     "hmac": {
-      "name": "HMAC生成器",
-      "description": "生成HMAC认证码"
+      "name": "HMAC 生成器",
+      "description": "生成 HMAC 认证码"
     },
     "rsa": {
-      "name": "RSA密钥对生成",
-      "description": "生成RSA公私钥对"
+      "name": "RSA 密钥对生成",
+      "description": "生成 RSA 公私钥对"
     },
     "base64": {
-      "name": "Base64编码/解码",
-      "description": "Base64格式编码和解码工具，支持文本和文件",
-      "title": "Base64编码/解码",
+      "name": "Base64 编码/解码",
+      "description": "Base64 格式编码和解码工具，支持文本和文件",
+      "title": "Base64 编码/解码",
       "encode": "编码",
       "decode": "解码",
-      "encodeTitle": "Base64编码",
-      "decodeTitle": "Base64解码",
+      "encodeTitle": "Base64 编码",
+      "decodeTitle": "Base64 解码",
       "originalText": "原始文本",
       "encodedResult": "编码结果",
-      "base64Text": "Base64文本",
+      "base64Text": "Base64 文本",
       "decodedResult": "解码结果",
       "inputPlaceholder": "输入要编码的文本...",
-      "base64Placeholder": "输入Base64文本...",
-      "encodeButton": "编码为Base64",
-      "decodeButton": "解码Base64",
+      "base64Placeholder": "输入 Base64 文本...",
+      "encodeButton": "编码为 Base64",
+      "decodeButton": "解码 Base64",
       "clearAll": "清除全部",
       "copy": "复制",
-      "fileUpload": "或上传文件 (最大1MB)",
+      "fileUpload": "或上传文件 (最大 1MB)",
       "sampleText": "示例文本",
-      "infoTitle": "Base64说明",
-      "infoDescription": "将二进制数据转换为ASCII字符",
+      "infoTitle": "Base64 说明",
+      "infoDescription": "将二进制数据转换为 ASCII 字符",
       "errorEmptyInput": "请输入要编码的文本",
-      "errorEmptyBase64": "请输入要解码的Base64文本",
-      "errorInvalidBase64": "无效的Base64格式",
-      "errorFileSize": "文件大小不能超过1MB",
+      "errorEmptyBase64": "请输入要解码的 Base64 文本",
+      "errorInvalidBase64": "无效的 Base64 格式",
+      "errorFileSize": "文件大小不能超过 1MB",
       "errorFileRead": "文件读取失败",
-      "successEncode": "Base64编码成功",
-      "successDecode": "Base64解码成功",
+      "successEncode": "Base64 编码成功",
+      "successDecode": "Base64 解码成功",
       "successFileEncode": "文件编码完成",
       "successCopy": "已复制到剪贴板",
       "errorCopy": "复制失败",
@@ -162,54 +162,54 @@
     },
     "color": {
       "name": "颜色转换",
-      "description": "HEX、RGB、HSL颜色格式转换"
+      "description": "HEX、RGB、HSL 颜色格式转换"
     },
     "format": {
-      "name": "JSON/YAML/XML转换",
+      "name": "JSON/YAML/XML 转换",
       "description": "数据格式之间的转换"
     },
     "url": {
-      "name": "URL编码/解码",
-      "description": "URL百分号编码和解码"
+      "name": "URL 编码/解码",
+      "description": "URL 百分号编码和解码"
     },
     "jwt": {
-      "name": "JWT解析器",
-      "description": "解析和验证JWT令牌"
+      "name": "JWT 解析器",
+      "description": "解析和验证 JWT 令牌"
     },
     "htmlEntities": {
-      "name": "HTML实体转义",
-      "description": "HTML特殊字符编码和解码"
+      "name": "HTML 实体转义",
+      "description": "HTML 特殊字符编码和解码"
     },
     "otp": {
-      "name": "OTP代码生成",
-      "description": "生成一次性密码(OTP)"
+      "name": "OTP 代码生成",
+      "description": "生成一次性密码 (OTP)"
     },
     "userAgent": {
       "name": "User-Agent解析",
-      "description": "解析浏览器User-Agent字符串"
+      "description": "解析浏览器 User-Agent 字符串"
     },
     "jsonFormatter": {
-      "name": "JSON格式化/压缩",
-      "description": "格式化和压缩JSON数据"
+      "name": "JSON 格式化/压缩",
+      "description": "格式化和压缩 JSON 数据"
     },
     "regex": {
       "name": "正则表达式测试",
       "description": "测试和匹配正则表达式"
     },
     "sqlFormatter": {
-      "name": "SQL格式化",
-      "description": "格式化SQL查询语句"
+      "name": "SQL 格式化",
+      "description": "格式化 SQL 查询语句"
     },
     "crontab": {
-      "name": "Crontab生成器",
-      "description": "生成Cron定时任务表达式"
+      "name": "Crontab 生成器",
+      "description": "生成 Cron 定时任务表达式"
     },
     "gitCheatsheet": {
-      "name": "Git速查表",
-      "description": "Git常用命令参考"
+      "name": "Git 速查表",
+      "description": "Git 常用命令参考"
     },
     "loremIpsum": {
-      "name": "Lorem ipsum生成",
+      "name": "Lorem ipsum 生成",
       "description": "生成占位文本"
     },
     "textStats": {
@@ -225,12 +225,12 @@
       "description": "转换文本大小写格式"
     },
     "qrCode": {
-      "name": "QR码生成",
+      "name": "QR 码生成",
       "description": "生成二维码"
     },
     "wifiQr": {
-      "name": "二维码WiFi生成",
-      "description": "生成WiFi连接二维码"
+      "name": "二维码 WiFi 生成",
+      "description": "生成 WiFi 连接二维码"
     },
     "calculator": {
       "name": "数学计算器",
@@ -238,7 +238,7 @@
     },
     "network": {
       "name": "网络工具",
-      "description": "IP查询、端口检测等网络工具"
+      "description": "IP 查询、端口检测等网络工具"
     }
   },
   "home": {
@@ -272,7 +272,7 @@
       "privacy": "隐私政策",
       "terms": "使用条款"
     },
-    "copyright": "© 2024 Dev Tools. 保留所有权利。"
+    "copyright": "© 2025 Dev Tools. 保留所有权利。"
   },
   "language": {
     "switch": "切换语言",

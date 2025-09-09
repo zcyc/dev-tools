@@ -15,7 +15,7 @@ export default function ObjectIdRedirectPage() {
       <div className="text-center">
         <h1 className="text-2xl font-bold mb-4">正在重定向...</h1>
         <p className="text-muted-foreground">
-          ObjectId生成器已合并到ID生成器中，支持更多格式
+          ObjectId 生成器已合并到 ID 生成器中，支持更多格式
         </p>
       </div>
     </div>

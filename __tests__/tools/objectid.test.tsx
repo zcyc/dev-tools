@@ -21,7 +21,7 @@ describe('ObjectId Redirect Page', () => {
     render(<ObjectIdRedirectPage />)
     
     expect(screen.getByText('正在重定向...')).toBeInTheDocument()
-    expect(screen.getByText('ObjectId生成器已合并到ID生成器中，支持更多格式')).toBeInTheDocument()
+    expect(screen.getByText('ObjectId 生成器已合并到 ID 生成器中，支持更多格式')).toBeInTheDocument()
   })
 
   it('redirects to advanced ID generator', () => {

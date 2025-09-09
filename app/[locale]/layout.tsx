@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
   
   const keywords = {
-    zh: ['开发者工具', 'Dev Tools', 'UUID生成器', 'ID生成器', '加密工具', '格式转换', 'Base64', 'JSON格式化', 'ULID', 'KSUID'],
+    zh: ['开发者工具', 'Dev Tools', 'UUID 生成器', 'ID 生成器', '加密工具', '格式转换', 'Base64', 'JSON 格式化', 'ULID', 'KSUID'],
     en: ['developer tools', 'dev tools', 'UUID generator', 'ID generator', 'encryption tools', 'format converter', 'Base64', 'JSON formatter', 'ULID', 'KSUID']
   };
 

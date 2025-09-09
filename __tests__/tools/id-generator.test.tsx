@@ -104,7 +104,7 @@ describe('ID Generator Tool', () => {
     it('renders the ID generator page', () => {
       render(<IDGeneratorPage />)
       
-      expect(screen.getByText('ID生成器')).toBeInTheDocument()
+      expect(screen.getByText('ID 生成器')).toBeInTheDocument()
     })
 
     it('has generate and parse tabs', () => {
