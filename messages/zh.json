@@ -1,0 +1,282 @@
+{
+  "home": {
+    "title": "Dev Tools",
+    "subtitle": "开发者工具集合",
+    "description": "免费的在线开发者工具集合，包含30+种ID生成与解析、加密解密、格式转换、Web工具等多种实用工具"
+  },
+  "common": {
+    "search": "搜索工具...",
+    "noResults": "未找到相关工具",
+    "toggleTheme": "切换主题",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单",
+    "copy": "复制",
+    "copied": "已复制",
+    "clear": "清空",
+    "generate": "生成",
+    "parse": "解析",
+    "export": "导出",
+    "import": "导入",
+    "download": "下载",
+    "upload": "上传",
+    "save": "保存",
+    "cancel": "取消",
+    "confirm": "确认",
+    "delete": "删除",
+    "edit": "编辑",
+    "view": "查看",
+    "close": "关闭",
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "warning": "警告",
+    "info": "信息"
+  },
+  "navigation": {
+    "home": "首页",
+    "tools": "工具",
+    "about": "关于",
+    "contact": "联系我们"
+  },
+  "categories": {
+    "idGenerators": "ID生成工具",
+    "crypto": "加密工具",
+    "converters": "转换器工具",
+    "web": "Web工具",
+    "dev": "开发工具",
+    "text": "文本工具",
+    "utilities": "实用工具"
+  },
+  "tools": {
+    "idGenerator": {
+      "name": "ID生成器",
+      "description": "支持30+种ID格式生成与解析，包括UUID、ULID、KSUID等",
+      "pageTitle": "ID生成器",
+      "pageDescription": "支持30+种ID格式的生成与解析，包括UUID、ULID、KSUID等现代标识符",
+      "generation": "生成ID",
+      "parsing": "解析ID",
+      "generateConfig": "ID生成配置",
+      "generateConfigDesc": "选择ID类型和生成参数",
+      "idType": "ID类型",
+      "selectIdType": "选择ID类型",
+      "generateCount": "生成数量",
+      "namespace": "命名空间UUID",
+      "namespacePlaceholder": "留空使用随机命名空间",
+      "nameField": "名称",
+      "namePlaceholder": "输入名称",
+      "length": "长度",
+      "alphabet": "自定义字母表",
+      "alphabetPlaceholder": "留空使用默认字母表",
+      "generateButton": "生成ID",
+      "formatInfo": "格式信息",
+      "example": "示例",
+      "features": "特征",
+      "generatedResults": "生成结果",
+      "exportIds": "导出ID",
+      "clearAll": "清空全部",
+      "copyId": "复制ID",
+      "idParser": "ID解析器",
+      "parserDescription": "输入任意ID进行格式识别和信息提取",
+      "idString": "ID字符串",
+      "parserPlaceholder": "输入要解析的ID...",
+      "detectedType": "检测类型",
+      "inputContent": "输入内容",
+      "properties": "属性信息",
+      "copied": "已复制到剪贴板",
+      "exportSuccess": "导出成功",
+      "invalidId": "无效的ID格式",
+      "categories": {
+        "UUID": "UUID标准格式",
+        "Modern": "现代ID格式",
+        "Encoded": "编码格式",
+        "Timestamp": "时间戳格式",
+        "Legacy": "传统格式"
+      }
+    },
+    "token": {
+      "name": "Token生成器",
+      "description": "生成随机访问令牌"
+    },
+    "hash": {
+      "name": "Hash文本生成",
+      "description": "生成MD5、SHA-1、SHA-256等哈希值"
+    },
+    "bcrypt": {
+      "name": "Bcrypt加密",
+      "description": "Bcrypt密码哈希和验证"
+    },
+    "encrypt": {
+      "name": "文本加密/解密",
+      "description": "AES、DES等对称加密算法"
+    },
+    "hmac": {
+      "name": "HMAC生成器",
+      "description": "生成HMAC认证码"
+    },
+    "rsa": {
+      "name": "RSA密钥对生成",
+      "description": "生成RSA公私钥对"
+    },
+    "base64": {
+      "name": "Base64编码/解码",
+      "description": "Base64格式编码和解码工具，支持文本和文件",
+      "title": "Base64编码/解码",
+      "encode": "编码",
+      "decode": "解码",
+      "encodeTitle": "Base64编码",
+      "decodeTitle": "Base64解码",
+      "originalText": "原始文本",
+      "encodedResult": "编码结果",
+      "base64Text": "Base64文本",
+      "decodedResult": "解码结果",
+      "inputPlaceholder": "输入要编码的文本...",
+      "base64Placeholder": "输入Base64文本...",
+      "encodeButton": "编码为Base64",
+      "decodeButton": "解码Base64",
+      "clearAll": "清除全部",
+      "copy": "复制",
+      "fileUpload": "或上传文件 (最大1MB)",
+      "sampleText": "示例文本",
+      "infoTitle": "Base64说明",
+      "infoDescription": "将二进制数据转换为ASCII字符",
+      "errorEmptyInput": "请输入要编码的文本",
+      "errorEmptyBase64": "请输入要解码的Base64文本",
+      "errorInvalidBase64": "无效的Base64格式",
+      "errorFileSize": "文件大小不能超过1MB",
+      "errorFileRead": "文件读取失败",
+      "successEncode": "Base64编码成功",
+      "successDecode": "Base64解码成功",
+      "successFileEncode": "文件编码完成",
+      "successCopy": "已复制到剪贴板",
+      "errorCopy": "复制失败",
+      "errorEncode": "编码失败",
+      "errorDecode": "解码失败"
+    },
+    "datetime": {
+      "name": "日期时间转换",
+      "description": "时间戳和日期格式转换"
+    },
+    "numberBase": {
+      "name": "进制转换",
+      "description": "二进制、八进制、十六进制转换"
+    },
+    "color": {
+      "name": "颜色转换",
+      "description": "HEX、RGB、HSL颜色格式转换"
+    },
+    "format": {
+      "name": "JSON/YAML/XML转换",
+      "description": "数据格式之间的转换"
+    },
+    "url": {
+      "name": "URL编码/解码",
+      "description": "URL百分号编码和解码"
+    },
+    "jwt": {
+      "name": "JWT解析器",
+      "description": "解析和验证JWT令牌"
+    },
+    "htmlEntities": {
+      "name": "HTML实体转义",
+      "description": "HTML特殊字符编码和解码"
+    },
+    "otp": {
+      "name": "OTP代码生成",
+      "description": "生成一次性密码(OTP)"
+    },
+    "userAgent": {
+      "name": "User-Agent解析",
+      "description": "解析浏览器User-Agent字符串"
+    },
+    "jsonFormatter": {
+      "name": "JSON格式化/压缩",
+      "description": "格式化和压缩JSON数据"
+    },
+    "regex": {
+      "name": "正则表达式测试",
+      "description": "测试和匹配正则表达式"
+    },
+    "sqlFormatter": {
+      "name": "SQL格式化",
+      "description": "格式化SQL查询语句"
+    },
+    "crontab": {
+      "name": "Crontab生成器",
+      "description": "生成Cron定时任务表达式"
+    },
+    "gitCheatsheet": {
+      "name": "Git速查表",
+      "description": "Git常用命令参考"
+    },
+    "loremIpsum": {
+      "name": "Lorem ipsum生成",
+      "description": "生成占位文本"
+    },
+    "textStats": {
+      "name": "文本统计",
+      "description": "统计字符、单词、行数等"
+    },
+    "textDiff": {
+      "name": "文本对比",
+      "description": "比较两段文本的差异"
+    },
+    "caseConverter": {
+      "name": "大小写转换",
+      "description": "转换文本大小写格式"
+    },
+    "qrCode": {
+      "name": "QR码生成",
+      "description": "生成二维码"
+    },
+    "wifiQr": {
+      "name": "二维码WiFi生成",
+      "description": "生成WiFi连接二维码"
+    },
+    "calculator": {
+      "name": "数学计算器",
+      "description": "基础数学计算工具"
+    },
+    "network": {
+      "name": "网络工具",
+      "description": "IP查询、端口检测等网络工具"
+    }
+  },
+  "home": {
+    "title": "Dev Tools",
+    "subtitle": "开发者工具集合",
+    "description": "一站式开发者工具平台，提供各种常用的编程和开发工具",
+    "features": {
+      "title": "功能特色",
+      "comprehensive": {
+        "title": "工具全面",
+        "description": "涵盖加密、转换、生成等多个类别的开发工具"
+      },
+      "easy": {
+        "title": "简单易用",
+        "description": "清晰的界面设计，无需安装即可使用"
+      },
+      "efficient": {
+        "title": "高效便捷",
+        "description": "快速完成各种开发任务，提高工作效率"
+      }
+    },
+    "getStarted": "开始使用",
+    "allTools": "查看所有工具"
+  },
+  "footer": {
+    "description": "专业的开发者工具集合，让开发更高效",
+    "links": {
+      "tools": "工具",
+      "about": "关于",
+      "contact": "联系",
+      "privacy": "隐私政策",
+      "terms": "使用条款"
+    },
+    "copyright": "© 2024 Dev Tools. 保留所有权利。"
+  },
+  "language": {
+    "switch": "切换语言",
+    "chinese": "中文",
+    "english": "English"
+  }
+}

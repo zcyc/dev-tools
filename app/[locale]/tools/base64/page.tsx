@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+// import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
@@ -13,6 +14,46 @@ import { ToolLayout } from '@/components/layout/tool-layout'
 import { toast } from 'sonner'
 
 export default function Base64Page() {
+  // const t = useTranslations('tools.base64')
+  // Temporary fallback translations
+  const t = (key: string) => {
+    const translations: Record<string, string> = {
+      'title': 'Base64编码/解码',
+      'description': 'Base64格式编码和解码工具，支持文本和文件',
+      'encode': '编码',
+      'decode': '解码',
+      'encodeTitle': 'Base64编码',
+      'decodeTitle': 'Base64解码',
+      'originalText': '原始文本',
+      'encodedResult': '编码结果',
+      'base64Text': 'Base64文本',
+      'decodedResult': '解码结果',
+      'inputPlaceholder': '输入要编码的文本...',
+      'base64Placeholder': '输入Base64文本...',
+      'encodeButton': '编码为Base64',
+      'decodeButton': '解码Base64',
+      'clearAll': '清除全部',
+      'copy': '复制',
+      'fileUpload': '或上传文件 (最大1MB)',
+      'sampleText': '示例文本',
+      'infoTitle': 'Base64说明',
+      'infoDescription': '将二进制数据转换为ASCII字符',
+      'errorEmptyInput': '请输入要编码的文本',
+      'errorEmptyBase64': '请输入要解码的Base64文本',
+      'errorInvalidBase64': '无效的Base64格式',
+      'errorFileSize': '文件大小不能超过1MB',
+      'errorFileRead': '文件读取失败',
+      'successEncode': 'Base64编码成功',
+      'successDecode': 'Base64解码成功',
+      'successFileEncode': '文件编码完成',
+      'successCopy': '已复制到剪贴板',
+      'errorCopy': '复制失败',
+      'errorEncode': '编码失败',
+      'errorDecode': '解码失败'
+    }
+    return translations[key] || key
+  }
+  
   // Encode state
   const [plainText, setPlainText] = useState('')
   const [encodedText, setEncodedText] = useState('')
@@ -23,45 +64,45 @@ export default function Base64Page() {
 
   const encodeToBase64 = () => {
     if (!plainText.trim()) {
-      toast.error('请输入要编码的文本')
+      toast.error(t('errorEmptyInput'))
       return
     }
 
     try {
       const encoded = btoa(unescape(encodeURIComponent(plainText)))
       setEncodedText(encoded)
-      toast.success('Base64编码成功')
+      toast.success(t('successEncode'))
     } catch (error) {
-      toast.error('编码失败: ' + (error as Error).message)
+      toast.error(t('errorEncode') + ': ' + (error as Error).message)
     }
   }
 
   const decodeFromBase64 = () => {
     if (!base64Text.trim()) {
-      toast.error('请输入要解码的Base64文本')
+      toast.error(t('errorEmptyBase64'))
       return
     }
 
     try {
       // Validate Base64 format
       if (!/^[A-Za-z0-9+/]*={0,2}$/.test(base64Text.replace(/\\s/g, ''))) {
-        throw new Error('无效的Base64格式')
+        throw new Error(t('errorInvalidBase64'))
       }
 
       const decoded = decodeURIComponent(escape(atob(base64Text.replace(/\\s/g, ''))))
       setDecodedText(decoded)
-      toast.success('Base64解码成功')
+      toast.success(t('successDecode'))
     } catch (error) {
-      toast.error('解码失败: ' + (error as Error).message)
+      toast.error(t('errorDecode') + ': ' + (error as Error).message)
     }
   }
 
   const copyToClipboard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text)
-      toast.success('已复制到剪贴板')
+      toast.success(t('successCopy'))
     } catch (err) {
-      toast.error('复制失败')
+      toast.error(t('errorCopy'))
     }
   }
 
@@ -85,7 +126,7 @@ export default function Base64Page() {
     if (!file) return
 
     if (file.size > 1024 * 1024) { // 1MB limit
-      toast.error('文件大小不能超过1MB')
+      toast.error(t('errorFileSize'))
       return
     }
 
@@ -95,11 +136,11 @@ export default function Base64Page() {
       if (result) {
         const base64 = result.split(',')[1] // Remove data URL prefix
         setEncodedText(base64)
-        toast.success('文件编码完成')
+        toast.success(t('successFileEncode'))
       }
     }
     reader.onerror = () => {
-      toast.error('文件读取失败')
+      toast.error(t('errorFileRead'))
     }
     reader.readAsDataURL(file)
   }
@@ -119,19 +160,19 @@ export default function Base64Page() {
   return (
     <MainLayout>
       <ToolLayout
-        title="Base64编码/解码"
-        description="Base64格式编码和解码工具，支持文本和文件"
+        title={t('title')}
+        description={t('description')}
         icon="Binary"
       >
         <Tabs defaultValue="encode" className="space-y-6">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="encode" className="flex items-center gap-2">
               <Binary className="h-4 w-4" />
-              编码
+              {t('encode')}
             </TabsTrigger>
             <TabsTrigger value="decode" className="flex items-center gap-2">
               <FileText className="h-4 w-4" />
-              解码
+              {t('decode')}
             </TabsTrigger>
           </TabsList>
 
@@ -139,27 +180,27 @@ export default function Base64Page() {
             {/* Encode Section */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Base64编码</h3>
+                <h3 className="text-lg font-semibold">{t('encodeTitle')}</h3>
                 <Button variant="outline" onClick={clearAll} size="sm">
-                  清除全部
+                  {t('clearAll')}
                 </Button>
               </div>
               
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="plain-text">原始文本</Label>
+                  <Label htmlFor="plain-text">{t('originalText')}</Label>
                   <Textarea
                     id="plain-text"
                     value={plainText}
                     onChange={(e) => setPlainText(e.target.value)}
-                    placeholder="输入要编码的文本..."
+                    placeholder={t('inputPlaceholder')}
                     className="min-h-[120px]"
                   />
                 </div>
 
                 {/* Sample texts */}
                 <div className="space-y-2">
-                  <Label className="text-sm text-muted-foreground">示例文本</Label>
+                  <Label className="text-sm text-muted-foreground">{t('sampleText')}</Label>
                   <div className="flex flex-wrap gap-2">
                     {sampleTexts.map((text, index) => (
                       <Button
@@ -177,7 +218,7 @@ export default function Base64Page() {
 
                 {/* File input */}
                 <div className="space-y-2">
-                  <Label htmlFor="file-input">或上传文件 (最大1MB)</Label>
+                  <Label htmlFor="file-input">{t('fileUpload')}</Label>
                   <input
                     id="file-input"
                     type="file"
@@ -189,7 +230,7 @@ export default function Base64Page() {
                 <div className="flex gap-2">
                   <Button onClick={encodeToBase64} className="flex items-center gap-2">
                     <Binary className="h-4 w-4" />
-                    编码为Base64
+                    {t('encodeButton')}
                   </Button>
                   {encodedText && (
                     <Button variant="outline" onClick={swapEncodeDecode} className="flex items-center gap-2">
@@ -203,7 +244,7 @@ export default function Base64Page() {
                   <Card>
                     <CardHeader>
                       <div className="flex items-center justify-between">
-                        <CardTitle className="text-lg">编码结果</CardTitle>
+                        <CardTitle className="text-lg">{t('encodedResult')}</CardTitle>
                         <Button
                           variant="ghost"
                           size="icon"
@@ -237,30 +278,30 @@ export default function Base64Page() {
           <TabsContent value="decode" className="space-y-6">
             {/* Decode Section */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold">Base64解码</h3>
+              <h3 className="text-lg font-semibold">{t('decodeTitle')}</h3>
               
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="base64-text">Base64文本</Label>
+                  <Label htmlFor="base64-text">{t('base64Text')}</Label>
                   <Textarea
                     id="base64-text"
                     value={base64Text}
                     onChange={(e) => setBase64Text(e.target.value)}
-                    placeholder="输入要解码的Base64文本..."
+                    placeholder={t('base64Placeholder')}
                     className="font-mono text-sm min-h-[120px]"
                   />
                 </div>
 
                 <Button onClick={decodeFromBase64} className="flex items-center gap-2">
                   <FileText className="h-4 w-4" />
-                  解码Base64
+                  {t('decodeButton')}
                 </Button>
 
                 {decodedText && (
                   <Card>
                     <CardHeader>
                       <div className="flex items-center justify-between">
-                        <CardTitle className="text-lg">解码结果</CardTitle>
+                        <CardTitle className="text-lg">{t('decodedResult')}</CardTitle>
                         <Button
                           variant="ghost"
                           size="icon"
@@ -295,12 +336,12 @@ export default function Base64Page() {
         {/* Info */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Base64说明</CardTitle>
+            <CardTitle className="text-lg">{t('infoTitle')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <div className="flex gap-3">
               <Badge>文本安全</Badge>
-              <span className="text-sm text-muted-foreground">将二进制数据转换为ASCII字符</span>
+              <span className="text-sm text-muted-foreground">{t('infoDescription')}</span>
             </div>
             <div className="flex gap-3">
               <Badge>URL安全</Badge>

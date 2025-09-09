@@ -1,0 +1,282 @@
+{
+  "home": {
+    "title": "Dev Tools",
+    "subtitle": "Developer Tools Collection",
+    "description": "Free online developer tools collection with 30+ ID generation and parsing, encryption, format conversion, web tools and more"
+  },
+  "common": {
+    "search": "Search tools...",
+    "noResults": "No tools found",
+    "toggleTheme": "Toggle theme",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "copy": "Copy",
+    "copied": "Copied",
+    "clear": "Clear",
+    "generate": "Generate",
+    "parse": "Parse",
+    "export": "Export",
+    "import": "Import",
+    "download": "Download",
+    "upload": "Upload",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "close": "Close",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Info"
+  },
+  "navigation": {
+    "home": "Home",
+    "tools": "Tools",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "categories": {
+    "idGenerators": "ID Generators",
+    "crypto": "Crypto Tools",
+    "converters": "Converters",
+    "web": "Web Tools",
+    "dev": "Dev Tools",
+    "text": "Text Tools",
+    "utilities": "Utilities"
+  },
+  "tools": {
+    "idGenerator": {
+      "name": "ID Generator",
+      "description": "Support 30+ ID formats generation and parsing, including UUID, ULID, KSUID, etc.",
+      "pageTitle": "ID Generator",
+      "pageDescription": "Support 30+ ID formats generation and parsing, including UUID, ULID, KSUID and other modern identifiers",
+      "generation": "Generate ID",
+      "parsing": "Parse ID",
+      "generateConfig": "ID Generation Config",
+      "generateConfigDesc": "Select ID type and generation parameters",
+      "idType": "ID Type",
+      "selectIdType": "Select ID Type",
+      "generateCount": "Generate Count",
+      "namespace": "Namespace UUID",
+      "namespacePlaceholder": "Leave empty to use random namespace",
+      "nameField": "Name",
+      "namePlaceholder": "Enter name",
+      "length": "Length",
+      "alphabet": "Custom Alphabet",
+      "alphabetPlaceholder": "Leave empty to use default alphabet",
+      "generateButton": "Generate ID",
+      "formatInfo": "Format Info",
+      "example": "Example",
+      "features": "Features",
+      "generatedResults": "Generated Results",
+      "exportIds": "Export IDs",
+      "clearAll": "Clear All",
+      "copyId": "Copy ID",
+      "idParser": "ID Parser",
+      "parserDescription": "Input any ID for format recognition and information extraction",
+      "idString": "ID String",
+      "parserPlaceholder": "Enter ID to parse...",
+      "detectedType": "Detected Type",
+      "inputContent": "Input Content",
+      "properties": "Properties",
+      "copied": "Copied to clipboard",
+      "exportSuccess": "Export successful",
+      "invalidId": "Invalid ID format",
+      "categories": {
+        "UUID": "UUID Standard Formats",
+        "Modern": "Modern ID Formats",
+        "Encoded": "Encoded Formats",
+        "Timestamp": "Timestamp Formats",
+        "Legacy": "Legacy Formats"
+      }
+    },
+    "token": {
+      "name": "Token Generator",
+      "description": "Generate random access tokens"
+    },
+    "hash": {
+      "name": "Hash Generator",
+      "description": "Generate MD5, SHA-1, SHA-256 and other hash values"
+    },
+    "bcrypt": {
+      "name": "Bcrypt Encryption",
+      "description": "Bcrypt password hashing and verification"
+    },
+    "encrypt": {
+      "name": "Text Encryption/Decryption",
+      "description": "AES, DES and other symmetric encryption algorithms"
+    },
+    "hmac": {
+      "name": "HMAC Generator",
+      "description": "Generate HMAC authentication codes"
+    },
+    "rsa": {
+      "name": "RSA Key Pair Generator",
+      "description": "Generate RSA public/private key pairs"
+    },
+    "base64": {
+      "name": "Base64 Encode/Decode",
+      "description": "Base64 format encoding and decoding tool, supports text and files",
+      "title": "Base64 Encode/Decode",
+      "encode": "Encode",
+      "decode": "Decode",
+      "encodeTitle": "Base64 Encode",
+      "decodeTitle": "Base64 Decode",
+      "originalText": "Original Text",
+      "encodedResult": "Encoded Result",
+      "base64Text": "Base64 Text",
+      "decodedResult": "Decoded Result",
+      "inputPlaceholder": "Enter text to encode...",
+      "base64Placeholder": "Enter Base64 text...",
+      "encodeButton": "Encode to Base64",
+      "decodeButton": "Decode Base64",
+      "clearAll": "Clear All",
+      "copy": "Copy",
+      "fileUpload": "or Upload File (Max 1MB)",
+      "sampleText": "Sample Text",
+      "infoTitle": "About Base64",
+      "infoDescription": "Convert binary data to ASCII characters",
+      "errorEmptyInput": "Please enter text to encode",
+      "errorEmptyBase64": "Please enter Base64 text to decode",
+      "errorInvalidBase64": "Invalid Base64 format",
+      "errorFileSize": "File size cannot exceed 1MB",
+      "errorFileRead": "File read failed",
+      "successEncode": "Base64 encoding successful",
+      "successDecode": "Base64 decoding successful",
+      "successFileEncode": "File encoding completed",
+      "successCopy": "Copied to clipboard",
+      "errorCopy": "Copy failed",
+      "errorEncode": "Encoding failed",
+      "errorDecode": "Decoding failed"
+    },
+    "datetime": {
+      "name": "Date Time Converter",
+      "description": "Timestamp and date format conversion"
+    },
+    "numberBase": {
+      "name": "Number Base Converter",
+      "description": "Binary, octal, hexadecimal conversion"
+    },
+    "color": {
+      "name": "Color Converter",
+      "description": "HEX, RGB, HSL color format conversion"
+    },
+    "format": {
+      "name": "JSON/YAML/XML Converter",
+      "description": "Conversion between data formats"
+    },
+    "url": {
+      "name": "URL Encode/Decode",
+      "description": "URL percent encoding and decoding"
+    },
+    "jwt": {
+      "name": "JWT Parser",
+      "description": "Parse and verify JWT tokens"
+    },
+    "htmlEntities": {
+      "name": "HTML Entity Escape",
+      "description": "HTML special character encoding and decoding"
+    },
+    "otp": {
+      "name": "OTP Code Generator",
+      "description": "Generate one-time passwords (OTP)"
+    },
+    "userAgent": {
+      "name": "User-Agent Parser",
+      "description": "Parse browser User-Agent strings"
+    },
+    "jsonFormatter": {
+      "name": "JSON Format/Compress",
+      "description": "Format and compress JSON data"
+    },
+    "regex": {
+      "name": "Regex Tester",
+      "description": "Test and match regular expressions"
+    },
+    "sqlFormatter": {
+      "name": "SQL Formatter",
+      "description": "Format SQL query statements"
+    },
+    "crontab": {
+      "name": "Crontab Generator",
+      "description": "Generate Cron scheduled task expressions"
+    },
+    "gitCheatsheet": {
+      "name": "Git Cheatsheet",
+      "description": "Git common commands reference"
+    },
+    "loremIpsum": {
+      "name": "Lorem Ipsum Generator",
+      "description": "Generate placeholder text"
+    },
+    "textStats": {
+      "name": "Text Statistics",
+      "description": "Count characters, words, lines, etc."
+    },
+    "textDiff": {
+      "name": "Text Diff",
+      "description": "Compare differences between two texts"
+    },
+    "caseConverter": {
+      "name": "Case Converter",
+      "description": "Convert text case formats"
+    },
+    "qrCode": {
+      "name": "QR Code Generator",
+      "description": "Generate QR codes"
+    },
+    "wifiQr": {
+      "name": "WiFi QR Generator",
+      "description": "Generate WiFi connection QR codes"
+    },
+    "calculator": {
+      "name": "Math Calculator",
+      "description": "Basic math calculation tool"
+    },
+    "network": {
+      "name": "Network Tools",
+      "description": "IP lookup, port detection and other network tools"
+    }
+  },
+  "home": {
+    "title": "Dev Tools",
+    "subtitle": "Developer Tools Collection",
+    "description": "One-stop developer tools platform providing various common programming and development tools",
+    "features": {
+      "title": "Features",
+      "comprehensive": {
+        "title": "Comprehensive Tools",
+        "description": "Covering multiple categories of development tools including encryption, conversion, generation, etc."
+      },
+      "easy": {
+        "title": "Easy to Use",
+        "description": "Clean interface design, ready to use without installation"
+      },
+      "efficient": {
+        "title": "Efficient & Convenient",
+        "description": "Quickly complete various development tasks and improve work efficiency"
+      }
+    },
+    "getStarted": "Get Started",
+    "allTools": "View All Tools"
+  },
+  "footer": {
+    "description": "Professional developer tools collection for more efficient development",
+    "links": {
+      "tools": "Tools",
+      "about": "About",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "copyright": "© 2024 Dev Tools. All rights reserved."
+  },
+  "language": {
+    "switch": "Switch Language",
+    "chinese": "中文",
+    "english": "English"
+  }
+}

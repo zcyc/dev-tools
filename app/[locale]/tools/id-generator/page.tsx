@@ -1,7 +1,26 @@
 'use client'
 
 import { useState, useCallback } from 'react'
+import { usePathname } from 'next/navigation'
+// import { useTranslations } from 'next-intl'
 import { Copy, RefreshCw, Info, Eye, EyeOff, Download } from 'lucide-react'
+
+// Import translations
+import zhMessages from '@/messages/zh.json'
+import enMessages from '@/messages/en.json'
+
+type Messages = typeof zhMessages
+type Locale = 'zh' | 'en'
+
+const messages: Record<Locale, Messages> = {
+  zh: zhMessages,
+  en: enMessages
+}
+
+// Helper function to get nested translation value
+function getTranslation(messages: Messages, key: string): string {
+  return key.split('.').reduce((current: any, k) => current?.[k], messages) || key
+}
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -166,6 +185,11 @@ const ID_FORMATS: IDFormat[] = [
 ]
 
 export default function IDGeneratorPage() {
+  const pathname = usePathname()
+  const locale: Locale = pathname.startsWith('/zh') ? 'zh' : 'en'
+  const currentMessages = messages[locale]
+  const t = (key: string): string => getTranslation(currentMessages, key)
+  
   const [selectedType, setSelectedType] = useState<IDType>('uuid-v4')
   const [quantity, setQuantity] = useState(1)
   const [generatedIds, setGeneratedIds] = useState<string[]>([])
@@ -416,16 +440,16 @@ export default function IDGeneratorPage() {
     <MainLayout>
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">ID生成器</h1>
+          <h1 className="text-3xl font-bold text-foreground">{t('tools.idGenerator.pageTitle')}</h1>
           <p className="text-muted-foreground mt-1">
-            支持30+种ID格式的生成与解析，包括UUID、ULID、KSUID等现代标识符
+            {t('tools.idGenerator.pageDescription')}
           </p>
         </div>
 
         <Tabs defaultValue="generate" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="generate">生成ID</TabsTrigger>
-            <TabsTrigger value="parse">解析ID</TabsTrigger>
+            <TabsTrigger value="generate">{t('tools.idGenerator.generation')}</TabsTrigger>
+            <TabsTrigger value="parse">{t('tools.idGenerator.parsing')}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="generate" className="space-y-6">
@@ -433,19 +457,19 @@ export default function IDGeneratorPage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <RefreshCw className="h-5 w-5" />
-                  ID生成配置
+                  {t('tools.idGenerator.generateConfig')}
                 </CardTitle>
                 <CardDescription>
-                  选择ID类型和生成参数
+                  {t('tools.idGenerator.generateConfigDesc')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="id-type">ID类型</Label>
+                    <Label htmlFor="id-type">{t('tools.idGenerator.idType')}</Label>
                     <Select value={selectedType} onValueChange={(value: IDType) => setSelectedType(value)}>
                       <SelectTrigger>
-                        <SelectValue placeholder="选择ID类型" />
+                        <SelectValue placeholder={t('tools.idGenerator.selectIdType')} />
                       </SelectTrigger>
                       <SelectContent>
                         {categories.map(category => (
@@ -468,7 +492,7 @@ export default function IDGeneratorPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="quantity">生成数量</Label>
+                    <Label htmlFor="quantity">{t('tools.idGenerator.generateCount')}</Label>
                     <Input
                       id="quantity"
                       type="number"
@@ -484,19 +508,19 @@ export default function IDGeneratorPage() {
                 {(selectedType === 'uuid-v5') && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="namespace">命名空间UUID</Label>
+                      <Label htmlFor="namespace">{t('tools.idGenerator.namespace')}</Label>
                       <Input
                         id="namespace"
-                        placeholder="留空使用随机命名空间"
+                        placeholder={t('tools.idGenerator.namespacePlaceholder')}
                         value={customNamespace}
                         onChange={(e) => setCustomNamespace(e.target.value)}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="name">名称</Label>
+                      <Label htmlFor="name">{t('tools.idGenerator.nameField')}</Label>
                       <Input
                         id="name"
-                        placeholder="输入名称"
+                        placeholder={t('tools.idGenerator.namePlaceholder')}
                         value={customName}
                         onChange={(e) => setCustomName(e.target.value)}
                       />
@@ -507,7 +531,7 @@ export default function IDGeneratorPage() {
                 {(selectedType === 'nanoid-custom') && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="length">长度</Label>
+                      <Label htmlFor="length">{t('tools.idGenerator.length')}</Label>
                       <Input
                         id="length"
                         type="number"
@@ -518,10 +542,10 @@ export default function IDGeneratorPage() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="alphabet">自定义字母表</Label>
+                      <Label htmlFor="alphabet">{t('tools.idGenerator.alphabet')}</Label>
                       <Input
                         id="alphabet"
-                        placeholder="留空使用默认字母表"
+                        placeholder={t('tools.idGenerator.alphabetPlaceholder')}
                         value={customAlphabetStr}
                         onChange={(e) => setCustomAlphabetStr(e.target.value)}
                       />
@@ -532,7 +556,7 @@ export default function IDGeneratorPage() {
                 <div className="flex gap-2">
                   <Button onClick={generateIds} className="flex-1">
                     <RefreshCw className="h-4 w-4 mr-2" />
-                    生成ID
+                    {t('tools.idGenerator.generateButton')}
                   </Button>
                   <Button
                     variant="outline"

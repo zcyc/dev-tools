@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import WiFiQRPage from '../../app/tools/wifi-qr/page'
+import WiFiQRPage from '../../app/[locale]/tools/wifi-qr/page'
 
 // Mock clipboard API
 Object.assign(navigator, {

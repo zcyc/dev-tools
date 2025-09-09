@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import GitCheatsheetPage from '../../app/tools/git-cheatsheet/page'
+import GitCheatsheetPage from '../../app/[locale]/tools/git-cheatsheet/page'
 
 // Mock clipboard API
 Object.assign(navigator, {

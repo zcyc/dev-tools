@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { render, screen } from '@testing-library/react'
-import RandomIdRedirectPage from '../../app/tools/random-id/page'
+import RandomIdRedirectPage from '../../app/[locale]/tools/random-id/page'
 
 // Mock useRouter
 const mockReplace = jest.fn()

@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import TextDiffPage from '../../app/tools/text-diff/page'
+import TextDiffPage from '../../app/[locale]/tools/text-diff/page'
 
 // Mock clipboard API
 Object.assign(navigator, {

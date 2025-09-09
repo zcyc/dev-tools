@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import TokenGeneratorPage from '../../app/tools/token/page'
+import TokenGeneratorPage from '../../app/[locale]/tools/token/page'
 
 // Mock clipboard API
 Object.assign(navigator, {

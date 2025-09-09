@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import RegexTesterPage from '../../app/tools/regex/page'
+import RegexTesterPage from '../../app/[locale]/tools/regex/page'
 
 // Mock clipboard API
 Object.assign(navigator, {

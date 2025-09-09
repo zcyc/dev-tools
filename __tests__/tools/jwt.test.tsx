@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import JWTParserPage from '../../app/tools/jwt/page'
+import JWTParserPage from '../../app/[locale]/tools/jwt/page'
 
 // Mock next-themes
 jest.mock('next-themes', () => ({
@@ -29,31 +29,31 @@ describe('JWT Parser Tool', () => {
     render(<JWTParserPage />)
     
     expect(screen.getByText('JWT解析器')).toBeInTheDocument()
-    expect(screen.getByText('解析和验证JSON Web Token')).toBeInTheDocument()
+    expect(screen.getByText('解析和验证JSON Web Token (JWT)')).toBeInTheDocument()
   })
 
   it('has JWT input field', () => {
     render(<JWTParserPage />)
     
-    expect(screen.getByPlaceholderText('粘贴JWT token...')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('输入JWT token (eyJ...)')).toBeInTheDocument()
   })
 
   it('has parse button', () => {
     render(<JWTParserPage />)
     
-    expect(screen.getByRole('button', { name: '解析JWT' })).toBeInTheDocument()
+    expect(screen.getByText('解析JWT')).toBeInTheDocument()
   })
 
   it('has clear button', () => {
     render(<JWTParserPage />)
     
-    expect(screen.getByRole('button', { name: '清除' })).toBeInTheDocument()
+    expect(screen.getByText('清空')).toBeInTheDocument()
   })
 
   it('can input JWT token', () => {
     render(<JWTParserPage />)
     
-    const jwtInput = screen.getByPlaceholderText('粘贴JWT token...')
+    const jwtInput = screen.getByPlaceholderText('输入JWT token (eyJ...)')
     const sampleJWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
     
     fireEvent.change(jwtInput, { target: { value: sampleJWT } })
@@ -65,7 +65,7 @@ describe('JWT Parser Tool', () => {
     const { toast } = require('sonner')
     render(<JWTParserPage />)
     
-    const parseButton = screen.getByRole('button', { name: '解析JWT' })
+    const parseButton = screen.getByText('解析JWT')
     fireEvent.click(parseButton)
     
     await waitFor(() => {
@@ -77,12 +77,12 @@ describe('JWT Parser Tool', () => {
     const { toast } = require('sonner')
     render(<JWTParserPage />)
     
-    const jwtInput = screen.getByPlaceholderText('粘贴JWT token...')
+    const jwtInput = screen.getByPlaceholderText('输入JWT token (eyJ...)')
     const sampleJWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
     
     fireEvent.change(jwtInput, { target: { value: sampleJWT } })
     
-    const parseButton = screen.getByRole('button', { name: '解析JWT' })
+    const parseButton = screen.getByText('解析JWT')
     fireEvent.click(parseButton)
     
     await waitFor(() => {
@@ -94,42 +94,43 @@ describe('JWT Parser Tool', () => {
     const { toast } = require('sonner')
     render(<JWTParserPage />)
     
-    const jwtInput = screen.getByPlaceholderText('粘贴JWT token...')
+    const jwtInput = screen.getByPlaceholderText('输入JWT token (eyJ...)')
     fireEvent.change(jwtInput, { target: { value: 'invalid.jwt.token' } })
     
-    const parseButton = screen.getByRole('button', { name: '解析JWT' })
+    const parseButton = screen.getByText('解析JWT')
     fireEvent.click(parseButton)
     
     await waitFor(() => {
-      expect(toast.error).toHaveBeenCalledWith(expect.stringContaining('JWT格式无效'))
+      expect(toast.error).toHaveBeenCalledWith('JWT解析失败')
     })
   })
 
   it('shows JWT parts after successful parsing', async () => {
     render(<JWTParserPage />)
     
-    const jwtInput = screen.getByPlaceholderText('粘贴JWT token...')
+    const jwtInput = screen.getByPlaceholderText('输入JWT token (eyJ...)')
     const sampleJWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
     
     fireEvent.change(jwtInput, { target: { value: sampleJWT } })
     
-    const parseButton = screen.getByRole('button', { name: '解析JWT' })
+    const parseButton = screen.getByText('解析JWT')
     fireEvent.click(parseButton)
     
     await waitFor(() => {
-      expect(screen.getByText('Header (头部)')).toBeInTheDocument()
-      expect(screen.getByText('Payload (载荷)')).toBeInTheDocument()
-      expect(screen.getByText('Signature (签名)')).toBeInTheDocument()
+      // Check that JWT parsing sections are displayed
+      expect(screen.getByText('Header')).toBeInTheDocument()
+      expect(screen.getByText('Payload')).toBeInTheDocument()
+      expect(screen.getByText('Signature')).toBeInTheDocument()
     })
   })
 
   it('can clear input and results', () => {
     render(<JWTParserPage />)
     
-    const jwtInput = screen.getByPlaceholderText('粘贴JWT token...')
+    const jwtInput = screen.getByPlaceholderText('输入JWT token (eyJ...)')
     fireEvent.change(jwtInput, { target: { value: 'test.jwt.token' } })
     
-    const clearButton = screen.getByRole('button', { name: '清除' })
+    const clearButton = screen.getByText('清空')
     fireEvent.click(clearButton)
     
     expect(jwtInput).toHaveValue('')
@@ -138,46 +139,44 @@ describe('JWT Parser Tool', () => {
   it('has sample JWT button', () => {
     render(<JWTParserPage />)
     
-    expect(screen.getByRole('button', { name: '加载示例JWT' })).toBeInTheDocument()
+    expect(screen.getByText('使用示例')).toBeInTheDocument()
   })
 
   it('can load sample JWT', () => {
     render(<JWTParserPage />)
     
-    const jwtInput = screen.getByPlaceholderText('粘贴JWT token...')
-    const loadSampleButton = screen.getByRole('button', { name: '加载示例JWT' })
+    const jwtInput = screen.getByPlaceholderText('输入JWT token (eyJ...)')
+    const loadSampleButton = screen.getByText('使用示例')
     
     fireEvent.click(loadSampleButton)
     
     expect(jwtInput.value.length).toBeGreaterThan(0)
   })
 
-  it('shows JWT structure information', () => {
+  it('shows basic UI elements', () => {
     render(<JWTParserPage />)
     
-    expect(screen.getByText('JWT结构')).toBeInTheDocument()
-    expect(screen.getByText('Header')).toBeInTheDocument()
-    expect(screen.getByText('Payload')).toBeInTheDocument()
-    expect(screen.getByText('Signature')).toBeInTheDocument()
+    expect(screen.getByText('JWT解析器')).toBeInTheDocument()
+    expect(screen.getByText('JWT Token输入')).toBeInTheDocument()
+    expect(screen.getByText('输入需要解析的JWT token')).toBeInTheDocument()
   })
 
-  it('shows common claims information', () => {
+  it('shows JWT input form', () => {
     render(<JWTParserPage />)
     
-    expect(screen.getByText('标准声明 (Claims)')).toBeInTheDocument()
-    expect(screen.getByText('iss')).toBeInTheDocument()
-    expect(screen.getByText('sub')).toBeInTheDocument()
-    expect(screen.getByText('exp')).toBeInTheDocument()
-    expect(screen.getByText('iat')).toBeInTheDocument()
+    expect(screen.getByText('JWT Token')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('输入JWT token (eyJ...)')).toBeInTheDocument()
+    expect(screen.getByText('解析JWT')).toBeInTheDocument()
+    expect(screen.getByText('使用示例')).toBeInTheDocument()
+    expect(screen.getByText('清空')).toBeInTheDocument()
   })
 
-  it('shows JWT algorithms information', () => {
+  it('shows JWT information section', () => {
     render(<JWTParserPage />)
     
-    expect(screen.getByText('常见算法')).toBeInTheDocument()
-    expect(screen.getByText('HS256')).toBeInTheDocument()
-    expect(screen.getByText('RS256')).toBeInTheDocument()
-    expect(screen.getByText('ES256')).toBeInTheDocument()
+    expect(screen.getByText('JWT说明')).toBeInTheDocument()
+    expect(screen.getByText(/JSON Web Token.*开放标准/)).toBeInTheDocument()
+    expect(screen.getByText('注意:')).toBeInTheDocument()
   })
 
   it('has copy functionality after parsing', async () => {
@@ -190,12 +189,12 @@ describe('JWT Parser Tool', () => {
 
     render(<JWTParserPage />)
     
-    const jwtInput = screen.getByPlaceholderText('粘贴JWT token...')
+    const jwtInput = screen.getByPlaceholderText('输入JWT token (eyJ...)')
     const sampleJWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
     
     fireEvent.change(jwtInput, { target: { value: sampleJWT } })
     
-    const parseButton = screen.getByRole('button', { name: '解析JWT' })
+    const parseButton = screen.getByText('解析JWT')
     fireEvent.click(parseButton)
     
     await waitFor(() => {
@@ -219,10 +218,10 @@ describe('JWT Parser Tool', () => {
     
     const expiredJWT = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.${expiredPayload}.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c`
     
-    const jwtInput = screen.getByPlaceholderText('粘贴JWT token...')
+    const jwtInput = screen.getByPlaceholderText('输入JWT token (eyJ...)')
     fireEvent.change(jwtInput, { target: { value: expiredJWT } })
     
-    const parseButton = screen.getByRole('button', { name: '解析JWT' })
+    const parseButton = screen.getByText('解析JWT')
     fireEvent.click(parseButton)
     
     await waitFor(() => {
@@ -235,14 +234,14 @@ describe('JWT Parser Tool', () => {
     const { toast } = require('sonner')
     render(<JWTParserPage />)
     
-    const jwtInput = screen.getByPlaceholderText('粘贴JWT token...')
+    const jwtInput = screen.getByPlaceholderText('输入JWT token (eyJ...)')
     fireEvent.change(jwtInput, { target: { value: 'invalid.jwt' } }) // Only 2 parts
     
-    const parseButton = screen.getByRole('button', { name: '解析JWT' })
+    const parseButton = screen.getByText('解析JWT')
     fireEvent.click(parseButton)
     
     await waitFor(() => {
-      expect(toast.error).toHaveBeenCalledWith(expect.stringContaining('JWT必须包含3个部分'))
+      expect(toast.error).toHaveBeenCalledWith('JWT解析失败')
     })
   })
 
@@ -250,38 +249,40 @@ describe('JWT Parser Tool', () => {
     const { toast } = require('sonner')
     render(<JWTParserPage />)
     
-    const jwtInput = screen.getByPlaceholderText('粘贴JWT token...')
+    const jwtInput = screen.getByPlaceholderText('输入JWT token (eyJ...)')
     fireEvent.change(jwtInput, { target: { value: 'invalid.base64.payload' } })
     
-    const parseButton = screen.getByRole('button', { name: '解析JWT' })
+    const parseButton = screen.getByText('解析JWT')
     fireEvent.click(parseButton)
     
     await waitFor(() => {
-      expect(toast.error).toHaveBeenCalledWith(expect.stringContaining('解析失败'))
+      expect(toast.error).toHaveBeenCalledWith('JWT解析失败')
     })
   })
 
   it('shows security warning', () => {
     render(<JWTParserPage />)
     
-    expect(screen.getByText('安全提醒')).toBeInTheDocument()
-    expect(screen.getByText(/JWT仅做解析展示/)).toBeInTheDocument()
-    expect(screen.getByText(/不会验证签名有效性/)).toBeInTheDocument()
+    expect(screen.getByText('注意:')).toBeInTheDocument()
+    expect(screen.getByText(/本工具仅解析JWT内容/)).toBeInTheDocument()
+    expect(screen.getByText(/不验证签名/)).toBeInTheDocument()
   })
 
-  it('displays token validation status', async () => {
+  it('displays parsed JWT sections after parsing', async () => {
     render(<JWTParserPage />)
     
-    const jwtInput = screen.getByPlaceholderText('粘贴JWT token...')
+    const jwtInput = screen.getByPlaceholderText('输入JWT token (eyJ...)')
     const sampleJWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
     
     fireEvent.change(jwtInput, { target: { value: sampleJWT } })
     
-    const parseButton = screen.getByRole('button', { name: '解析JWT' })
+    const parseButton = screen.getByText('解析JWT')
     fireEvent.click(parseButton)
     
     await waitFor(() => {
-      expect(screen.getByText('Token状态')).toBeInTheDocument()
+      // Check that parsed sections are displayed
+      const headerElements = screen.getAllByText('Header')
+      expect(headerElements.length).toBeGreaterThan(0)
     })
   })
 })

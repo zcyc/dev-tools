@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import OTPGeneratorPage from '../../app/tools/otp/page'
+import OTPGeneratorPage from '../../app/[locale]/tools/otp/page'
 
 // Mock clipboard API
 Object.assign(navigator, {

@@ -2,24 +2,49 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+// import { useLocale, useTranslations } from 'next-intl'
 import { useTheme } from 'next-themes'
 import { Search, Moon, Sun, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { toolCategories } from '@/types/tools'
+import { LanguageSwitcher } from '@/components/language-switcher'
+import { useLocalizedTools } from '@/lib/i18n-tools'
+
+// Manual translations for common UI elements
+const translations = {
+  zh: {
+    search: '搜索工具...',
+    noResults: '未找到相关工具',
+    toggleTheme: '切换主题',
+    openMenu: '打开菜单'
+  },
+  en: {
+    search: 'Search tools...',
+    noResults: 'No tools found',
+    toggleTheme: 'Toggle theme',
+    openMenu: 'Open menu'
+  }
+}
 
 export function Header() {
   const [searchQuery, setSearchQuery] = useState('')
   const { theme, setTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+  
+  // Extract locale from pathname
+  const locale = pathname.startsWith('/zh') ? 'zh' : 'en'
+  const t = (key: keyof typeof translations.zh) => translations[locale][key]
+  const toolCategories = useLocalizedTools()
 
   // Filter tools based on search query
   const filteredTools = toolCategories.flatMap(category =>
     category.tools.filter(tool =>
       tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       tool.description.toLowerCase().includes(searchQuery.toLowerCase())
-    )
+    ).map(tool => ({ ...tool, path: `/${locale}${tool.path}` }))
   )
 
   return (
@@ -27,7 +52,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href={`/${locale}`} className="flex items-center space-x-2">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-sm">DT</span>
             </div>
@@ -40,7 +65,7 @@ export function Header() {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
                 type="search"
-                placeholder="搜索工具..."
+                placeholder={t('search')}
                 className="pl-10"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -60,7 +85,7 @@ export function Header() {
                       </Link>
                     ))
                   ) : (
-                    <div className="px-4 py-3 text-muted-foreground">未找到相关工具</div>
+                    <div className="px-4 py-3 text-muted-foreground">{t('noResults')}</div>
                   )}
                 </div>
               )}
@@ -69,6 +94,7 @@ export function Header() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-2">
+            <LanguageSwitcher />
             <Button
               variant="ghost"
               size="icon"
@@ -76,7 +102,7 @@ export function Header() {
             >
               <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">切换主题</span>
+              <span className="sr-only">{t('toggleTheme')}</span>
             </Button>
           </div>
 
@@ -86,7 +112,7 @@ export function Header() {
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
                   <Menu className="h-5 w-5" />
-                  <span className="sr-only">打开菜单</span>
+                  <span className="sr-only">{t('openMenu')}</span>
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-80">
@@ -96,11 +122,16 @@ export function Header() {
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                     <Input
                       type="search"
-                      placeholder="搜索工具..."
+                      placeholder={t('search')}
                       className="pl-10"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                     />
+                  </div>
+
+                  {/* Language Switcher */}
+                  <div className="flex justify-center">
+                    <LanguageSwitcher />
                   </div>
 
                   {/* Theme Toggle */}
@@ -111,7 +142,7 @@ export function Header() {
                   >
                     <Sun className="h-5 w-5 mr-2 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                     <Moon className="absolute h-5 w-5 ml-2 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                    切换主题
+                    {t('toggleTheme')}
                   </Button>
 
                   {/* Navigation */}
@@ -125,7 +156,7 @@ export function Header() {
                           {category.tools.map((tool) => (
                             <Link
                               key={tool.id}
-                              href={tool.path}
+                              href={`/${locale}${tool.path}`}
                               className="block px-3 py-2 text-sm rounded-md hover:bg-accent transition-colors"
                               onClick={() => setIsOpen(false)}
                             >

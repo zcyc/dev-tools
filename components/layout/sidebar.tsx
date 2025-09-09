@@ -2,8 +2,9 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+// import { useLocale } from 'next-intl'
 import { cn } from '@/lib/utils'
-import { toolCategories } from '@/types/tools'
+import { useLocalizedTools } from '@/lib/i18n-tools'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Badge } from '@/components/ui/badge'
 import * as Icons from 'lucide-react'
@@ -16,6 +17,9 @@ const getIcon = (iconName: string) => {
 
 export function Sidebar() {
   const pathname = usePathname()
+  // Extract locale from pathname
+  const locale = pathname.startsWith('/zh') ? 'zh' : 'en'
+  const toolCategories = useLocalizedTools()
 
   return (
     <div className="hidden lg:flex w-64 flex-col fixed inset-y-0 left-0 top-16 z-40">
@@ -38,11 +42,12 @@ export function Sidebar() {
                   <ul className="space-y-1 ml-6">
                     {category.tools.map((tool) => {
                       const ToolIcon = getIcon(tool.icon)
-                      const isActive = pathname === tool.path
+                      const toolPath = `/${locale}${tool.path}`
+                      const isActive = pathname === toolPath
                       return (
                         <li key={tool.id}>
                           <Link
-                            href={tool.path}
+                            href={toolPath}
                             className={cn(
                               'flex items-center gap-3 px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground',
                               isActive && 'bg-accent text-accent-foreground font-medium'

@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import UserAgentParserPage from '../../app/tools/user-agent/page'
+import UserAgentParserPage from '../../app/[locale]/tools/user-agent/page'
 
 // Mock clipboard API
 Object.assign(navigator, {

@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import SQLFormatterPage from '../../app/tools/sql-formatter/page'
+import SQLFormatterPage from '../../app/[locale]/tools/sql-formatter/page'
 
 // Mock clipboard API
 Object.assign(navigator, {

@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { render, screen, fireEvent } from '@testing-library/react'
-import CalculatorPage from '../../app/tools/calculator/page'
+import CalculatorPage from '../../app/[locale]/tools/calculator/page'
 
 // Mock next-themes
 jest.mock('next-themes', () => ({
@@ -20,14 +20,16 @@ describe('Calculator Tool', () => {
   it('renders the calculator page', () => {
     render(<CalculatorPage />)
     
-    expect(screen.getByText('计算器')).toBeInTheDocument()
+    expect(screen.getAllByText('计算器')).toHaveLength(2) // Title appears twice
     expect(screen.getByText('基础数学计算工具')).toBeInTheDocument()
   })
 
   it('shows initial display of 0', () => {
     render(<CalculatorPage />)
     
-    expect(screen.getByText('0')).toBeInTheDocument()
+    // Use a more specific selector for the display
+    const display = document.querySelector('.bg-gray-900.text-white')
+    expect(display).toHaveTextContent('0')
   })
 
   it('has all number buttons', () => {
@@ -62,7 +64,8 @@ describe('Calculator Tool', () => {
     const button5 = screen.getByRole('button', { name: '5' })
     fireEvent.click(button5)
     
-    expect(screen.getByText('5')).toBeInTheDocument()
+    const display = document.querySelector('.bg-gray-900.text-white')
+    expect(display).toHaveTextContent('5')
   })
 
   it('can perform addition', () => {
@@ -73,7 +76,8 @@ describe('Calculator Tool', () => {
     fireEvent.click(screen.getByRole('button', { name: '3' }))
     fireEvent.click(screen.getByRole('button', { name: '=' }))
     
-    expect(screen.getByText('5')).toBeInTheDocument()
+    const display = document.querySelector('.bg-gray-900.text-white')
+    expect(display).toHaveTextContent('5')
   })
 
   it('can perform subtraction', () => {
@@ -84,7 +88,8 @@ describe('Calculator Tool', () => {
     fireEvent.click(screen.getByRole('button', { name: '3' }))
     fireEvent.click(screen.getByRole('button', { name: '=' }))
     
-    expect(screen.getByText('5')).toBeInTheDocument()
+    const display = document.querySelector('.bg-gray-900.text-white')
+    expect(display).toHaveTextContent('5')
   })
 
   it('can perform multiplication', () => {
@@ -95,7 +100,8 @@ describe('Calculator Tool', () => {
     fireEvent.click(screen.getByRole('button', { name: '3' }))
     fireEvent.click(screen.getByRole('button', { name: '=' }))
     
-    expect(screen.getByText('12')).toBeInTheDocument()
+    const display = document.querySelector('.bg-gray-900.text-white')
+    expect(display).toHaveTextContent('12')
   })
 
   it('can perform division', () => {
@@ -106,17 +112,19 @@ describe('Calculator Tool', () => {
     fireEvent.click(screen.getByRole('button', { name: '2' }))
     fireEvent.click(screen.getByRole('button', { name: '=' }))
     
-    expect(screen.getByText('4')).toBeInTheDocument()
+    const display = document.querySelector('.bg-gray-900.text-white')
+    expect(display).toHaveTextContent('4')
   })
 
   it('can clear the display', () => {
     render(<CalculatorPage />)
     
     fireEvent.click(screen.getByRole('button', { name: '5' }))
-    expect(screen.getByText('5')).toBeInTheDocument()
+    const display = document.querySelector('.bg-gray-900.text-white')
+    expect(display).toHaveTextContent('5')
     
     fireEvent.click(screen.getByRole('button', { name: 'Clear' }))
-    expect(screen.getByText('0')).toBeInTheDocument()
+    expect(display).toHaveTextContent('0')
   })
 
   it('can handle decimal points', () => {
@@ -127,7 +135,8 @@ describe('Calculator Tool', () => {
     fireEvent.click(screen.getByRole('button', { name: '1' }))
     fireEvent.click(screen.getByRole('button', { name: '4' }))
     
-    expect(screen.getByText('3.14')).toBeInTheDocument()
+    const display = document.querySelector('.bg-gray-900.text-white')
+    expect(display).toHaveTextContent('3.14')
   })
 
   it('can backspace single digits', () => {
@@ -137,10 +146,11 @@ describe('Calculator Tool', () => {
     fireEvent.click(screen.getByRole('button', { name: '2' }))
     fireEvent.click(screen.getByRole('button', { name: '3' }))
     
-    expect(screen.getByText('123')).toBeInTheDocument()
+    const display = document.querySelector('.bg-gray-900.text-white')
+    expect(display).toHaveTextContent('123')
     
     fireEvent.click(screen.getByRole('button', { name: '⌫' }))
-    expect(screen.getByText('12')).toBeInTheDocument()
+    expect(display).toHaveTextContent('12')
   })
 
   it('handles multiple number input correctly', () => {
@@ -150,16 +160,18 @@ describe('Calculator Tool', () => {
     fireEvent.click(screen.getByRole('button', { name: '0' }))
     fireEvent.click(screen.getByRole('button', { name: '0' }))
     
-    expect(screen.getByText('100')).toBeInTheDocument()
+    const display = document.querySelector('.bg-gray-900.text-white')
+    expect(display).toHaveTextContent('100')
   })
 
   it('replaces 0 with first number input', () => {
     render(<CalculatorPage />)
     
-    expect(screen.getByText('0')).toBeInTheDocument()
+    const display = document.querySelector('.bg-gray-900.text-white')
+    expect(display).toHaveTextContent('0')
     
     fireEvent.click(screen.getByRole('button', { name: '7' }))
-    expect(screen.getByText('7')).toBeInTheDocument()
-    expect(screen.queryByText('07')).not.toBeInTheDocument()
+    expect(display).toHaveTextContent('7')
+    expect(display).not.toHaveTextContent('07')
   })
 })

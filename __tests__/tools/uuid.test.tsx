@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { render, screen } from '@testing-library/react'
-import UUIDRedirectPage from '../../app/tools/uuid/page'
+import UUIDRedirectPage from '../../app/[locale]/tools/uuid/page'
 
 // Mock useRouter
 const mockReplace = jest.fn()

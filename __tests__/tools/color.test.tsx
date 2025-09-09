@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import ColorConverterPage from '../../app/tools/color/page'
+import ColorConverterPage from '../../app/[locale]/tools/color/page'
 
 // Mock next-themes
 jest.mock('next-themes', () => ({

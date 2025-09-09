@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import RSAKeyGeneratorPage from '../../app/tools/rsa/page'
+import RSAKeyGeneratorPage from '../../app/[locale]/tools/rsa/page'
 
 // Mock clipboard API
 Object.assign(navigator, {

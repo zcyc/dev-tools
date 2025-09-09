@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import CrontabGeneratorPage from '../../app/tools/crontab/page'
+import CrontabGeneratorPage from '../../app/[locale]/tools/crontab/page'
 
 // Mock clipboard API
 Object.assign(navigator, {
