@@ -58,7 +58,7 @@ export const i18nToolCategories: I18nToolCategory[] = [
     tools: [
       { id: 'base64', nameKey: 'tools.base64.name', descriptionKey: 'tools.base64.description', icon: 'Binary', path: '/tools/base64', category: 'converters' },
       { id: 'datetime', nameKey: 'tools.datetime.name', descriptionKey: 'tools.datetime.description', icon: 'Calendar', path: '/tools/datetime', category: 'converters' },
-      { id: 'number-base', nameKey: 'tools.numberBase.name', descriptionKey: 'tools.numberBase.description', icon: 'Calculator', path: '/tools/number-base', category: 'converters' },
+      { id: 'number-base', nameKey: 'tools.numberBase.name', descriptionKey: 'tools.numberBase.description', icon: 'Binary', path: '/tools/number-base', category: 'converters' },
       { id: 'color', nameKey: 'tools.color.name', descriptionKey: 'tools.color.description', icon: 'Palette', path: '/tools/color', category: 'converters' },
       { id: 'format', nameKey: 'tools.format.name', descriptionKey: 'tools.format.description', icon: 'FileCode', path: '/tools/format', category: 'converters' },
     ]
@@ -84,7 +84,7 @@ export const i18nToolCategories: I18nToolCategory[] = [
       { id: 'regex', nameKey: 'tools.regex.name', descriptionKey: 'tools.regex.description', icon: 'SearchCheck', path: '/tools/regex', category: 'dev' },
       { id: 'sql-formatter', nameKey: 'tools.sqlFormatter.name', descriptionKey: 'tools.sqlFormatter.description', icon: 'Database', path: '/tools/sql-formatter', category: 'dev' },
       { id: 'crontab', nameKey: 'tools.crontab.name', descriptionKey: 'tools.crontab.description', icon: 'Clock', path: '/tools/crontab', category: 'dev' },
-      { id: 'git-cheatsheet', nameKey: 'tools.gitCheatsheet.name', descriptionKey: 'tools.gitCheatsheet.description', icon: 'GitBranch', path: '/tools/git-cheatsheet', category: 'dev' },
+
     ]
   },
   {
@@ -105,7 +105,7 @@ export const i18nToolCategories: I18nToolCategory[] = [
     tools: [
       { id: 'qr-code', nameKey: 'tools.qrCode.name', descriptionKey: 'tools.qrCode.description', icon: 'QrCode', path: '/tools/qr-code', category: 'utilities' },
       { id: 'wifi-qr', nameKey: 'tools.wifiQr.name', descriptionKey: 'tools.wifiQr.description', icon: 'Wifi', path: '/tools/wifi-qr', category: 'utilities' },
-      { id: 'calculator', nameKey: 'tools.calculator.name', descriptionKey: 'tools.calculator.description', icon: 'Calculator', path: '/tools/calculator', category: 'utilities' },
+
       { id: 'network', nameKey: 'tools.network.name', descriptionKey: 'tools.network.description', icon: 'Network', path: '/tools/network', category: 'utilities' },
     ]
   },

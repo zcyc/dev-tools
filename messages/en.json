@@ -204,10 +204,6 @@
       "name": "Crontab Generator",
       "description": "Generate Cron scheduled task expressions"
     },
-    "gitCheatsheet": {
-      "name": "Git Cheatsheet",
-      "description": "Git common commands reference"
-    },
     "loremIpsum": {
       "name": "Lorem Ipsum Generator",
       "description": "Generate placeholder text"
@@ -232,10 +228,7 @@
       "name": "WiFi QR Generator",
       "description": "Generate WiFi connection QR codes"
     },
-    "calculator": {
-      "name": "Math Calculator",
-      "description": "Basic math calculation tool"
-    },
+
     "network": {
       "name": "Network Tools",
       "description": "IP lookup, port detection and other network tools"

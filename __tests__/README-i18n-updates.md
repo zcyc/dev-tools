@@ -87,7 +87,7 @@ expect(screen.getByText(getTranslationText('tools.toolName.key', 'zh'))).toBeInT
 - [ ] datetime.test.tsx
 - [ ] encrypt.test.tsx
 - [ ] format.test.tsx
-- [ ] git-cheatsheet.test.tsx
+
 - [ ] hash.test.tsx
 - [ ] hmac.test.tsx
 - [ ] html-entities.test.tsx

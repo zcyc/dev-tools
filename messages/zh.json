@@ -204,10 +204,6 @@
       "name": "Crontab 生成器",
       "description": "生成 Cron 定时任务表达式"
     },
-    "gitCheatsheet": {
-      "name": "Git 速查表",
-      "description": "Git 常用命令参考"
-    },
     "loremIpsum": {
       "name": "Lorem ipsum 生成",
       "description": "生成占位文本"
@@ -232,10 +228,7 @@
       "name": "二维码 WiFi 生成",
       "description": "生成 WiFi 连接二维码"
     },
-    "calculator": {
-      "name": "数学计算器",
-      "description": "基础数学计算工具"
-    },
+
     "network": {
       "name": "网络工具",
       "description": "IP 查询、端口检测等网络工具"

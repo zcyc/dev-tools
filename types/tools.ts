@@ -43,7 +43,7 @@ export const toolCategories: ToolCategory[] = [
     tools: [
       { id: 'base64', name: 'Base64编码/解码', description: 'Base64格式编码和解码', icon: 'Binary', path: '/tools/base64', category: 'converters' },
       { id: 'datetime', name: '日期时间转换', description: '时间戳和日期格式转换', icon: 'Calendar', path: '/tools/datetime', category: 'converters' },
-      { id: 'number-base', name: '进制转换', description: '二进制、八进制、十六进制转换', icon: 'Calculator', path: '/tools/number-base', category: 'converters' },
+      { id: 'number-base', name: '进制转换', description: '二进制、八进制、十六进制转换', icon: 'Binary', path: '/tools/number-base', category: 'converters' },
       { id: 'color', name: '颜色转换', description: 'HEX、RGB、HSL颜色格式转换', icon: 'Palette', path: '/tools/color', category: 'converters' },
       { id: 'format', name: 'JSON/YAML/XML转换', description: '数据格式之间的转换', icon: 'FileCode', path: '/tools/format', category: 'converters' },
     ]
@@ -69,7 +69,7 @@ export const toolCategories: ToolCategory[] = [
       { id: 'regex', name: '正则表达式测试', description: '测试和匹配正则表达式', icon: 'SearchCheck', path: '/tools/regex', category: 'dev' },
       { id: 'sql-formatter', name: 'SQL格式化', description: '格式化SQL查询语句', icon: 'Database', path: '/tools/sql-formatter', category: 'dev' },
       { id: 'crontab', name: 'Crontab生成器', description: '生成Cron定时任务表达式', icon: 'Clock', path: '/tools/crontab', category: 'dev' },
-      { id: 'git-cheatsheet', name: 'Git速查表', description: 'Git常用命令参考', icon: 'GitBranch', path: '/tools/git-cheatsheet', category: 'dev' },
+
     ]
   },
   {
@@ -90,7 +90,7 @@ export const toolCategories: ToolCategory[] = [
     tools: [
       { id: 'qr-code', name: 'QR码生成', description: '生成二维码', icon: 'QrCode', path: '/tools/qr-code', category: 'utilities' },
       { id: 'wifi-qr', name: '二维码WiFi生成', description: '生成WiFi连接二维码', icon: 'Wifi', path: '/tools/wifi-qr', category: 'utilities' },
-      { id: 'calculator', name: '数学计算器', description: '基础数学计算工具', icon: 'Calculator', path: '/tools/calculator', category: 'utilities' },
+
       { id: 'network', name: '网络工具', description: 'IP查询、端口检测等网络工具', icon: 'Network', path: '/tools/network', category: 'utilities' },
     ]
   },

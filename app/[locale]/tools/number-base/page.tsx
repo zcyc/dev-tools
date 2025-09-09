@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
-import { Copy, Calculator, RefreshCw } from 'lucide-react'
+import { Copy, Binary, RefreshCw } from 'lucide-react'
 import { MainLayout } from '@/components/layout/main-layout'
 import { ToolLayout } from '@/components/layout/tool-layout'
 import { toast } from 'sonner'
@@ -153,7 +153,7 @@ export default function NumberBaseConverterPage() {
       <ToolLayout
         title="进制转换"
         description="二进制、八进制、十进制、十六进制等数字进制转换"
-        icon="Calculator"
+        icon="Binary"
       >
         <div className="space-y-6">
           {/* Input Section */}
@@ -214,7 +214,7 @@ export default function NumberBaseConverterPage() {
 
             <div className="flex gap-2">
               <Button onClick={convertNumber} className="flex items-center gap-2">
-                <Calculator className="h-4 w-4" />
+                <Binary className="h-4 w-4" />
                 转换
               </Button>
               {result && (

@@ -186,3 +186,17 @@ const customRender = (
 // Re-export everything
 export * from '@testing-library/react'
 export { customRender as render }
+
+// Tests for test utilities
+describe('Test Utilities', () => {
+  it('exports mock translations', () => {
+    expect(mockTranslations).toBeDefined()
+    expect(mockTranslations.zh).toBeDefined()
+    expect(mockTranslations.en).toBeDefined()
+  })
+
+  it('exports custom render function', () => {
+    expect(customRender).toBeDefined()
+    expect(typeof customRender).toBe('function')
+  })
+})

@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { useLocalizedTools } from '@/lib/i18n-tools'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Badge } from '@/components/ui/badge'
+// Badge import removed - not used
 import * as Icons from 'lucide-react'
 
 // Map icon names to actual icon components
@@ -30,16 +30,13 @@ export function Sidebar() {
               const CategoryIcon = getIcon(category.icon)
               return (
                 <div key={category.id}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <CategoryIcon className="h-4 w-4 text-muted-foreground" />
-                    <h3 className="font-medium text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2 mb-3 px-2">
+                    <CategoryIcon className="h-4 w-4 text-primary" />
+                    <h3 className="font-medium text-sm text-foreground">
                       {category.name}
                     </h3>
-                    <Badge variant="secondary" className="text-xs">
-                      {category.tools.length}
-                    </Badge>
                   </div>
-                  <ul className="space-y-1 ml-6">
+                  <ul className="space-y-1 ml-2">
                     {category.tools.map((tool) => {
                       const ToolIcon = getIcon(tool.icon)
                       const toolPath = `/${locale}${tool.path}`
@@ -49,11 +46,14 @@ export function Sidebar() {
                           <Link
                             href={toolPath}
                             className={cn(
-                              'flex items-center gap-3 px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground',
-                              isActive && 'bg-accent text-accent-foreground font-medium'
+                              'flex items-center gap-3 px-3 py-2.5 text-sm rounded-lg transition-colors hover:bg-muted/50',
+                              isActive && 'bg-primary/10 text-primary font-medium border-r-2 border-primary'
                             )}
                           >
-                            <ToolIcon className="h-4 w-4" />
+                            <ToolIcon className={cn(
+                              'h-4 w-4',
+                              isActive ? 'text-primary' : 'text-muted-foreground'
+                            )} />
                             <span className="flex-1">{tool.name}</span>
                           </Link>
                         </li>
