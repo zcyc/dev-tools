@@ -202,7 +202,100 @@
     },
     "crontab": {
       "name": "Crontab Generator",
-      "description": "Generate Cron scheduled task expressions"
+      "description": "Generate Cron scheduled task expressions",
+      "title": "Crontab Generator",
+      "pageDescription": "Generate and customize Cron scheduled task expressions",
+      "currentExpression": "Current Expression",
+      "readableDescription": "Description",
+      "timeSettings": "Time Settings",
+      "timeSettingsDesc": "Configure scheduled task execution time",
+      "fields": {
+        "minute": "Minute (0-59)",
+        "hour": "Hour (0-23)",
+        "day": "Day (1-31)",
+        "month": "Month (1-12)",
+        "weekday": "Weekday (0-7)"
+      },
+      "placeholders": {
+        "minute": "Every minute",
+        "hour": "Every hour",
+        "day": "Every day",
+        "month": "Every month",
+        "weekday": "Every day of week"
+      },
+      "options": {
+        "every": "Every",
+        "specific": "Specific",
+        "range": "Range",
+        "interval": "Interval",
+        "list": "List"
+      },
+      "weekdays": {
+        "0": "Sunday",
+        "1": "Monday",
+        "2": "Tuesday",
+        "3": "Wednesday",
+        "4": "Thursday",
+        "5": "Friday",
+        "6": "Saturday",
+        "7": "Sunday"
+      },
+      "months": {
+        "1": "January",
+        "2": "February",
+        "3": "March",
+        "4": "April",
+        "5": "May",
+        "6": "June",
+        "7": "July",
+        "8": "August",
+        "9": "September",
+        "10": "October",
+        "11": "November",
+        "12": "December"
+      },
+      "presets": {
+        "title": "Common Presets",
+        "everyMinute": "Every minute",
+        "everyHour": "Every hour",
+        "everyDay": "Every day at midnight",
+        "everyWeek": "Every Sunday at midnight",
+        "everyMonth": "Every 1st of month at midnight",
+        "everyYear": "Every January 1st at midnight",
+        "workdaysAt9": "Weekdays at 9 AM",
+        "every6Hours": "Every 6 hours",
+        "twiceDaily": "Twice daily (6 AM and 6 PM)",
+        "weeklyBackup": "Weekly backup (Sunday 2 AM)"
+      },
+      "examples": {
+        "title": "Common Examples",
+        "everyDay": "Every day at midnight",
+        "every6Hours": "Every 6 hours",
+        "workdays9am": "Weekdays at 9 AM",
+        "weeklyReport": "Weekly report (Monday 8 AM)",
+        "monthlyCleanup": "Monthly cleanup (1st day 2 AM)"
+      },
+      "actions": {
+        "generate": "Generate Expression",
+        "usePreset": "Use Preset",
+        "reset": "Reset",
+        "copyExpression": "Copy Expression"
+      },
+      "messages": {
+        "generated": "Cron expression generated successfully",
+        "copied": "Copied to clipboard",
+        "copyFailed": "Copy failed",
+        "invalidInput": "Invalid input value",
+        "presetApplied": "Preset applied successfully"
+      },
+      "descriptions": {
+        "everyMinute": "At every minute",
+        "everyHour": "At minute 0",
+        "everyDay": "At 00:00",
+        "everyWeek": "At 00:00 on Sunday",
+        "everyMonth": "At 00:00 on day-of-month 1",
+        "custom": "Custom schedule"
+      }
     },
     "loremIpsum": {
       "name": "Lorem Ipsum Generator",
