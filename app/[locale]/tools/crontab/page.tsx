@@ -32,7 +32,7 @@ export default function CrontabGeneratorPage({ params }: Props) {
       try {
         const resolvedParams = await params
         setLocale(resolvedParams.locale as 'en' | 'zh')
-      } catch {
+      } catch (error) {
         setLocale('zh') // fallback
       }
     }

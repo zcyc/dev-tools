@@ -18,6 +18,7 @@ export default getRequestConfig(async ({locale}) => {
   if (!locales.includes(locale as any)) notFound();
 
   return {
+    locale: locale as string,
     messages: messages[locale as keyof typeof messages]
   };
 });

@@ -54,7 +54,7 @@ export default function HTMLEntitiesPage() {
     try {
       await navigator.clipboard.writeText(text)
       toast.success('已复制到剪贴板')
-    } catch (err) {
+    } catch (error) {
       toast.error('复制失败')
     }
   }
@@ -67,7 +67,7 @@ export default function HTMLEntitiesPage() {
         icon="Code"
       >
         <div className="space-y-6">
-          <Tabs value={mode} onValueChange={(value: any) => setMode(value)}>
+          <Tabs value={mode} onValueChange={(value: string) => setMode(value as 'encode' | 'decode')}>
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="encode">编码</TabsTrigger>
               <TabsTrigger value="decode">解码</TabsTrigger>

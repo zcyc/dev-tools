@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Badge } from '@/components/ui/badge'
-import { Copy, RefreshCw, Key } from 'lucide-react'
+import { Copy, RefreshCw } from 'lucide-react'
 import { MainLayout } from '@/components/layout/main-layout'
 import { ToolLayout } from '@/components/layout/tool-layout'
 import { toast } from 'sonner'
@@ -114,7 +114,7 @@ export default function TokenGeneratorPage() {
     try {
       await navigator.clipboard.writeText(text)
       toast.success('已复制到剪贴板')
-    } catch (err) {
+    } catch (error) {
       toast.error('复制失败')
     }
   }
@@ -124,7 +124,7 @@ export default function TokenGeneratorPage() {
     await copyToClipboard(allTokens)
   }
 
-  const updateOptions = (key: keyof TokenOptions, value: any) => {
+  const updateOptions = (key: keyof TokenOptions, value: string | number | boolean) => {
     setOptions(prev => ({ ...prev, [key]: value }))
   }
 
@@ -167,7 +167,7 @@ export default function TokenGeneratorPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="format">格式</Label>
-                <Select value={options.format} onValueChange={(value: any) => updateOptions('format', value)}>
+                <Select value={options.format} onValueChange={(value: string) => updateOptions('format', value)}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>

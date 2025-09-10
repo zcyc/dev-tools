@@ -66,7 +66,7 @@ export default function JSONFormatterPage() {
     try {
       await navigator.clipboard.writeText(text)
       toast.success('已复制到剪贴板')
-    } catch (err) {
+    } catch (error) {
       toast.error('复制失败')
     }
   }

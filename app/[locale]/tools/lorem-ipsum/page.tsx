@@ -35,7 +35,7 @@ export default function LoremIpsumPage() {
 
   const generateSentence = (minWords = 6, maxWords = 16) => {
     const wordCount = Math.floor(Math.random() * (maxWords - minWords + 1)) + minWords
-    let sentence = []
+    const sentence = []
     
     for (let i = 0; i < wordCount; i++) {
       sentence.push(getRandomWord())
@@ -49,7 +49,7 @@ export default function LoremIpsumPage() {
 
   const generateParagraph = (minSentences = 3, maxSentences = 7) => {
     const sentenceCount = Math.floor(Math.random() * (maxSentences - minSentences + 1)) + minSentences
-    let paragraph = []
+    const paragraph = []
     
     for (let i = 0; i < sentenceCount; i++) {
       paragraph.push(generateSentence())
@@ -62,7 +62,7 @@ export default function LoremIpsumPage() {
     let result = []
 
     if (type === 'words') {
-      let words = []
+      const words = []
       if (startWithLorem && count > 0) {
         words.push('Lorem')
         for (let i = 1; i < count; i++) {
@@ -101,7 +101,7 @@ export default function LoremIpsumPage() {
     try {
       await navigator.clipboard.writeText(output)
       toast.success('已复制到剪贴板')
-    } catch (err) {
+    } catch (error) {
       toast.error('复制失败')
     }
   }
@@ -124,7 +124,7 @@ export default function LoremIpsumPage() {
               <div className="grid gap-4 md:grid-cols-3">
                 <div>
                   <Label htmlFor="type">文本类型</Label>
-                  <Select value={type} onValueChange={(value: any) => setType(value)}>
+                  <Select value={type} onValueChange={(value: string) => setType(value as 'words' | 'sentences' | 'paragraphs')}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>

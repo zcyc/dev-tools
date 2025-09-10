@@ -11,7 +11,7 @@ import * as Icons from 'lucide-react'
 
 // Map icon names to actual icon components
 const getIcon = (iconName: string) => {
-  const IconComponent = (Icons as any)[iconName]
+  const IconComponent = (Icons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[iconName]
   return IconComponent || Icons.Settings
 }
 

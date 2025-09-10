@@ -10,30 +10,34 @@ import { MainLayout } from '@/components/layout/main-layout'
 import { ToolLayout } from '@/components/layout/tool-layout'
 import { toast } from 'sonner'
 
+type DiffItem = 
+  | { type: 'equal' | 'added' | 'removed'; line: string; lineNum: number }
+  | { type: 'changed'; line1: string; line2: string; lineNum: number }
+
 export default function TextDiffPage() {
   const [text1, setText1] = useState('')
   const [text2, setText2] = useState('')
-  const [diff, setDiff] = useState<any[]>([])
+  const [diff, setDiff] = useState<DiffItem[]>([])
 
   const compareTexts = () => {
     // 简单的文本对比算法
     const lines1 = text1.split('\n')
     const lines2 = text2.split('\n')
     const maxLines = Math.max(lines1.length, lines2.length)
-    const result = []
+    const result: DiffItem[] = []
 
     for (let i = 0; i < maxLines; i++) {
       const line1 = lines1[i] || ''
       const line2 = lines2[i] || ''
       
       if (line1 === line2) {
-        result.push({ type: 'equal', line: line1, lineNum: i + 1 })
+        result.push({ type: 'equal' as const, line: line1, lineNum: i + 1 })
       } else if (!line1) {
-        result.push({ type: 'added', line: line2, lineNum: i + 1 })
+        result.push({ type: 'added' as const, line: line2, lineNum: i + 1 })
       } else if (!line2) {
-        result.push({ type: 'removed', line: line1, lineNum: i + 1 })
+        result.push({ type: 'removed' as const, line: line1, lineNum: i + 1 })
       } else {
-        result.push({ type: 'changed', line1, line2, lineNum: i + 1 })
+        result.push({ type: 'changed' as const, line1, line2, lineNum: i + 1 })
       }
     }
 

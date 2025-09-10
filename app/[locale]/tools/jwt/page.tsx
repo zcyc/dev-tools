@@ -12,8 +12,8 @@ import { ToolLayout } from '@/components/layout/tool-layout'
 import { toast } from 'sonner'
 
 interface JWTPayload {
-  header: any
-  payload: any
+  header: Record<string, unknown> | null
+  payload: Record<string, unknown> | null
   signature: string
   valid: boolean
   error?: string
@@ -69,7 +69,7 @@ export default function JWTParserPage() {
     try {
       await navigator.clipboard.writeText(typeof text === 'string' ? text : JSON.stringify(text, null, 2))
       toast.success(`${label}已复制到剪贴板`)
-    } catch (err) {
+    } catch (error) {
       toast.error('复制失败')
     }
   }
@@ -147,7 +147,7 @@ export default function JWTParserPage() {
                         <Button
                           variant="ghost"
                           size="icon"
-                          onClick={() => copyToClipboard(parsedJWT.header, 'Header')}
+                          onClick={() => copyToClipboard(JSON.stringify(parsedJWT.header, null, 2), 'Header')}
                           className="h-8 w-8"
                         >
                           <Copy className="h-4 w-4" />
@@ -161,10 +161,10 @@ export default function JWTParserPage() {
                       </pre>
                       <div className="mt-3 flex gap-2">
                         <Badge variant="outline">
-                          算法: {parsedJWT.header?.alg || 'N/A'}
+                          算法: {String(parsedJWT.header?.alg || 'N/A')}
                         </Badge>
                         <Badge variant="outline">
-                          类型: {parsedJWT.header?.typ || 'N/A'}
+                          类型: {String(parsedJWT.header?.typ || 'N/A')}
                         </Badge>
                       </div>
                     </CardContent>
@@ -187,7 +187,7 @@ export default function JWTParserPage() {
                           <Button
                             variant="ghost"
                             size="icon"
-                            onClick={() => copyToClipboard(parsedJWT.payload, 'Payload')}
+                            onClick={() => copyToClipboard(JSON.stringify(parsedJWT.payload, null, 2), 'Payload')}
                             className="h-8 w-8"
                           >
                             <Copy className="h-4 w-4" />
@@ -207,32 +207,32 @@ export default function JWTParserPage() {
                       <div className="space-y-2">
                         <h4 className="font-medium">标准声明</h4>
                         <div className="grid gap-2 text-sm">
-                          {parsedJWT.payload?.sub && (
-                            <div><strong>Subject (sub):</strong> {parsedJWT.payload.sub}</div>
+                          {parsedJWT.payload && 'sub' in parsedJWT.payload && (
+                            <div><strong>Subject (sub):</strong> {String(parsedJWT.payload.sub)}</div>
                           )}
-                          {parsedJWT.payload?.iss && (
-                            <div><strong>Issuer (iss):</strong> {parsedJWT.payload.iss}</div>
+                          {parsedJWT.payload && 'iss' in parsedJWT.payload && (
+                            <div><strong>Issuer (iss):</strong> {String(parsedJWT.payload.iss)}</div>
                           )}
-                          {parsedJWT.payload?.aud && (
-                            <div><strong>Audience (aud):</strong> {parsedJWT.payload.aud}</div>
+                          {parsedJWT.payload && 'aud' in parsedJWT.payload && (
+                            <div><strong>Audience (aud):</strong> {String(parsedJWT.payload.aud)}</div>
                           )}
-                          {parsedJWT.payload?.exp && (
+                          {parsedJWT.payload && typeof parsedJWT.payload.exp === 'number' && (
                             <div className="flex items-center gap-2">
                               <strong>Expires (exp):</strong> 
-                              {formatTimestamp(parsedJWT.payload.exp)}
-                              {isExpired(parsedJWT.payload.exp) && (
+                              {formatTimestamp(parsedJWT.payload.exp as number)}
+                              {isExpired(parsedJWT.payload.exp as number) && (
                                 <Badge variant="destructive">已过期</Badge>
                               )}
                             </div>
                           )}
-                          {parsedJWT.payload?.nbf && (
-                            <div><strong>Not Before (nbf):</strong> {formatTimestamp(parsedJWT.payload.nbf)}</div>
+                          {parsedJWT.payload && typeof parsedJWT.payload.nbf === 'number' && (
+                            <div><strong>Not Before (nbf):</strong> {formatTimestamp(parsedJWT.payload.nbf as number)}</div>
                           )}
-                          {parsedJWT.payload?.iat && (
-                            <div><strong>Issued At (iat):</strong> {formatTimestamp(parsedJWT.payload.iat)}</div>
+                          {parsedJWT.payload && typeof parsedJWT.payload.iat === 'number' && (
+                            <div><strong>Issued At (iat):</strong> {formatTimestamp(parsedJWT.payload.iat as number)}</div>
                           )}
-                          {parsedJWT.payload?.jti && (
-                            <div><strong>JWT ID (jti):</strong> {parsedJWT.payload.jti}</div>
+                          {parsedJWT.payload && 'jti' in parsedJWT.payload && (
+                            <div><strong>JWT ID (jti):</strong> {String(parsedJWT.payload.jti)}</div>
                           )}
                         </div>
                       </div>

@@ -170,7 +170,7 @@ export default function DateTimeConverterPage() {
         default:
           return date.toString()
       }
-    } catch {
+    } catch (error) {
       return date.toString()
     }
   }
@@ -220,7 +220,7 @@ export default function DateTimeConverterPage() {
     try {
       await navigator.clipboard.writeText(text)
       toast.success('已复制到剪贴板')
-    } catch (err) {
+    } catch (error) {
       toast.error('复制失败')
     }
   }
@@ -316,7 +316,7 @@ export default function DateTimeConverterPage() {
 
                 <div className="space-y-2">
                   <Label htmlFor="timestamp-unit">单位</Label>
-                  <Select value={timestampUnit} onValueChange={(value: any) => setTimestampUnit(value)}>
+                  <Select value={timestampUnit} onValueChange={(value: string) => setTimestampUnit(value as 'seconds' | 'milliseconds')}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
@@ -366,7 +366,7 @@ export default function DateTimeConverterPage() {
                     onChange={(e) => setDateTimeInput(e.target.value)}
                   />
                   <div className="text-sm text-muted-foreground">
-                    也可以输入: '2024-01-15', '2024-01-15 10:30:00', 'January 15, 2024' 等格式
+                    也可以输入: &apos;2024-01-15&apos;, &apos;2024-01-15 10:30:00&apos;, &apos;January 15, 2024&apos; 等格式
                   </div>
                 </div>
 
