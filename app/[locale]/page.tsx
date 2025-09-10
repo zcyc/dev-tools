@@ -5,13 +5,13 @@ import { Badge } from '@/components/ui/badge'
 // Import specific icons used on the homepage
 import { 
   Hash, Binary, Lock, Calendar, Braces, QrCode, 
-  Palette, Shield, KeyRound, Link as LinkIcon, SearchCheck, Clock, Settings 
+  Palette, Shield, Link as LinkIcon, SearchCheck, Clock, Settings 
 } from 'lucide-react'
 
 // Map icon names to actual icon components
 const iconMap = {
   Hash, Binary, Lock, Calendar, Braces, QrCode,
-  Palette, Shield, KeyRound, Link: LinkIcon, SearchCheck, Clock, Settings
+  Palette, Shield, Link: LinkIcon, SearchCheck, Clock, Settings
 } as const;
 
 const getIcon = (iconName: string) => {

@@ -3,12 +3,12 @@
 import { useState } from 'react'
 // import { useTranslations } from 'next-intl'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Copy, Binary, FileText, Image as ImageIcon, RefreshCw } from 'lucide-react'
+import { Copy, Binary, FileText, RefreshCw } from 'lucide-react'
 import { MainLayout } from '@/components/layout/main-layout'
 import { ToolLayout } from '@/components/layout/tool-layout'
 import { toast } from 'sonner'
@@ -101,7 +101,7 @@ export default function Base64Page() {
     try {
       await navigator.clipboard.writeText(text)
       toast.success(t('successCopy'))
-    } catch (err) {
+    } catch (error) {
       toast.error(t('errorCopy'))
     }
   }

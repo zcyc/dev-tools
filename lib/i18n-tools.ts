@@ -112,8 +112,11 @@ export const i18nToolCategories: I18nToolCategory[] = [
 ];
 
 // Helper function to get nested object value by key path
-function getNestedValue(obj: any, keyPath: string): string {
-  return keyPath.split('.').reduce((current, key) => current?.[key], obj) || keyPath;
+function getNestedValue(obj: Record<string, unknown>, keyPath: string): string {
+  const result = keyPath.split('.').reduce((current: unknown, key) => {
+    return (current as Record<string, unknown>)?.[key];
+  }, obj);
+  return (result as string) || keyPath;
 }
 
 // Hook to get localized tools data

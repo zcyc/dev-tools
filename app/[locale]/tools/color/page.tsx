@@ -45,7 +45,9 @@ export default function ColorConverterPage() {
     g /= 255
     b /= 255
     const max = Math.max(r, g, b), min = Math.min(r, g, b)
-    let h, s, l = (max + min) / 2
+    let h = 0
+    const l = (max + min) / 2
+    let s
 
     if (max === min) {
       h = s = 0
@@ -73,7 +75,9 @@ export default function ColorConverterPage() {
     g /= 255
     b /= 255
     const max = Math.max(r, g, b), min = Math.min(r, g, b)
-    let h, s, v = max
+    let h = 0
+    const v = max
+    let s
 
     const d = max - min
     s = max === 0 ? 0 : d / max
@@ -161,7 +165,7 @@ export default function ColorConverterPage() {
     try {
       await navigator.clipboard.writeText(text)
       toast.success(`${format}格式已复制到剪贴板`)
-    } catch (err) {
+    } catch (error) {
       toast.error('复制失败')
     }
   }

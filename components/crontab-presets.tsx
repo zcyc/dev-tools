@@ -206,8 +206,8 @@ export function CrontabPresets({ onSelectPreset, locale = 'en', translations }: 
                           </code>
                           <Copy 
                             className="h-3 w-3 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" 
-                            onClick={(e) => copyToClipboard(preset.expression, e)}
-                            title={locale === 'zh' ? '点击复制' : 'Click to copy'}
+                            onClick={(e: React.MouseEvent) => copyToClipboard(preset.expression, e)}
+                            data-title={locale === 'zh' ? '点击复制' : 'Click to copy'}
                           />
                         </div>
                       </div>

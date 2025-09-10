@@ -10,7 +10,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Copy, ShieldCheck, Unlock, Lock } from 'lucide-react'
+import { Copy, Unlock, Lock } from 'lucide-react'
 import { MainLayout } from '@/components/layout/main-layout'
 import { ToolLayout } from '@/components/layout/tool-layout'
 import { toast } from 'sonner'
@@ -127,7 +127,7 @@ export default function EncryptDecryptPage() {
     try {
       await navigator.clipboard.writeText(text)
       toast.success('已复制到剪贴板')
-    } catch (err) {
+    } catch (error) {
       toast.error('复制失败')
     }
   }

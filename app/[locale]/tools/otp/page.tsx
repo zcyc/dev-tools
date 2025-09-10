@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
-import { Copy, Smartphone, RefreshCw } from 'lucide-react'
+import { Copy } from 'lucide-react'
 import { MainLayout } from '@/components/layout/main-layout'
 import { ToolLayout } from '@/components/layout/tool-layout'
 import { toast } from 'sonner'
@@ -46,7 +46,7 @@ export default function OTPGeneratorPage() {
     try {
       await navigator.clipboard.writeText(text)
       toast.success('OTP已复制到剪贴板')
-    } catch (err) {
+    } catch (error) {
       toast.error('复制失败')
     }
   }

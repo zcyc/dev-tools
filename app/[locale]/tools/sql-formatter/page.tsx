@@ -20,7 +20,7 @@ export default function SQLFormatterPage() {
     }
 
     // 简单的SQL格式化
-    let formatted = input
+    const formatted = input
       .replace(/\s+/g, ' ')
       .replace(/;\s*/g, ';\n')
       .replace(/\b(SELECT|FROM|WHERE|JOIN|LEFT JOIN|RIGHT JOIN|INNER JOIN|ORDER BY|GROUP BY|HAVING)\b/gi, '\n$1')
@@ -36,7 +36,7 @@ export default function SQLFormatterPage() {
     try {
       await navigator.clipboard.writeText(text)
       toast.success('已复制到剪贴板')
-    } catch (err) {
+    } catch (error) {
       toast.error('复制失败')
     }
   }

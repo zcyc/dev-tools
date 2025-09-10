@@ -11,9 +11,18 @@ import { MainLayout } from '@/components/layout/main-layout'
 import { ToolLayout } from '@/components/layout/tool-layout'
 import { toast } from 'sonner'
 
+interface ParsedUserAgent {
+  browser: string
+  browserVersion: string
+  os: string
+  osVersion: string
+  isMobile: boolean
+  deviceType: string
+}
+
 export default function UserAgentParserPage() {
   const [userAgent, setUserAgent] = useState('')
-  const [parsedInfo, setParsedInfo] = useState<any>(null)
+  const [parsedInfo, setParsedInfo] = useState<ParsedUserAgent | null>(null)
 
   const parseUserAgent = (ua: string) => {
     // 简单的User-Agent解析
@@ -50,7 +59,7 @@ export default function UserAgentParserPage() {
     try {
       await navigator.clipboard.writeText(text)
       toast.success('已复制到剪贴板')
-    } catch (err) {
+    } catch (error) {
       toast.error('复制失败')
     }
   }

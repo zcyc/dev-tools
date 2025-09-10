@@ -3,7 +3,7 @@
 import { useState, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
 // import { useTranslations } from 'next-intl'
-import { Copy, RefreshCw, Info, Eye, EyeOff, Download } from 'lucide-react'
+import { Copy, Info, Eye, EyeOff, Download, RefreshCw } from 'lucide-react'
 
 // Import translations
 import zhMessages from '@/messages/zh.json'
@@ -19,7 +19,8 @@ const messages: Record<Locale, Messages> = {
 
 // Helper function to get nested translation value
 function getTranslation(messages: Messages, key: string): string {
-  return key.split('.').reduce((current: any, k) => current?.[k], messages) || key
+  const result = key.split('.').reduce((current: unknown, k) => (current as Record<string, unknown>)?.[k], messages)
+  return (result as string) || key
 }
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -33,7 +34,7 @@ import { MainLayout } from '@/components/layout/main-layout'
 import { toast } from 'sonner'
 import { v1 as uuidv1, v4 as uuidv4, v5 as uuidv5, v6 as uuidv6, v7 as uuidv7 } from 'uuid'
 import { ulid } from 'ulid'
-import { generate as ksuidGenerate, KSUID } from 'ksuid'
+import KSUID from 'ksuid'
 import { nanoid, customAlphabet } from 'nanoid'
 import { Snowflake } from '@sapphire/snowflake'
 import { Sonyflake } from 'sonyflake'
@@ -226,7 +227,7 @@ export default function IDGeneratorPage() {
       case 'ulid':
         return ulid()
       case 'ksuid':
-        return ksuidGenerate().string
+        return KSUID.randomSync().string
       case 'nanoid':
         return nanoid()
       case 'nanoid-custom':
@@ -297,7 +298,7 @@ export default function IDGeneratorPage() {
     if (uuidPattern.test(id)) {
       result.detectedType = 'UUID'
       const version = parseInt(id.charAt(14), 16)
-      result.properties.version = version
+      result.properties.version = version.toString()
       result.properties.variant = 'RFC 4122'
       
       if (version === 1) {
@@ -333,7 +334,7 @@ export default function IDGeneratorPage() {
           timestamp = timestamp * 32 + chars.indexOf(timestampPart[i].toUpperCase())
         }
         result.properties.timestamp = new Date(timestamp).toISOString()
-      } catch {
+      } catch (error) {
         result.properties.error = 'Invalid ULID format'
       }
     }
@@ -345,7 +346,7 @@ export default function IDGeneratorPage() {
         const ksuid = KSUID.parse(id)
         result.properties.timestamp = ksuid.date.toISOString()
         result.properties.payload = ksuid.payload.toString('hex')
-      } catch {
+      } catch (error) {
         result.properties.error = 'Invalid KSUID format'
       }
     }
@@ -353,14 +354,14 @@ export default function IDGeneratorPage() {
     // Nano ID pattern (URL-safe base64)
     else if (/^[A-Za-z0-9_-]+$/.test(id) && id.length >= 10 && id.length <= 25) {
       result.detectedType = 'Nano ID'
-      result.properties.length = id.length
+      result.properties.length = id.length.toString()
       result.properties.charset = 'URL-safe base64'
     }
     
     // CUID2 pattern
     else if (/^c[0-9a-z]{24}$/.test(id)) {
       result.detectedType = 'CUID2'
-      result.properties.length = id.length
+      result.properties.length = id.length.toString()
       result.properties.prefix = id.charAt(0)
     }
     
@@ -382,7 +383,7 @@ export default function IDGeneratorPage() {
       } else {
         // Try Sony Flake format (different bit layout)
         result.detectedType = 'Sony Flake ID (Probable)'
-        result.properties.length = id.length
+        result.properties.length = id.length.toString()
         result.properties.note = 'Large numeric ID, possibly Sony Flake format'
       }
     }
@@ -410,8 +411,8 @@ export default function IDGeneratorPage() {
     // Hex hash pattern
     else if (/^[0-9a-f]{32,64}$/i.test(id)) {
       result.detectedType = 'Hex Hash'
-      result.properties.length = id.length
-      result.properties.bits = id.length * 4
+      result.properties.length = id.length.toString()
+      result.properties.bits = (id.length * 4).toString()
     }
 
     setParserResult(result)

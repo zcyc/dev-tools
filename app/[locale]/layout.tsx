@@ -11,7 +11,8 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-const locales = ['zh', 'en'];
+const locales = ['zh', 'en'] as const;
+type Locale = typeof locales[number];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -42,7 +43,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   
   // Validate that the incoming `locale` parameter is valid
-  if (!locales.includes(locale as any)) notFound();
+  if (!locales.includes(locale as Locale)) notFound();
 
   // const messages = await getMessages();
 
